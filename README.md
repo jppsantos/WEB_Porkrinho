@@ -1,22 +1,25 @@
 # WebProjetoFinal
 
-## Core
+## Descrição
 Uma vaquinha para um objetivo específico. 
 
 Ex.: Dois irmão querem comprar playstation e vão dividir a conta.  Eles podem ir adicionando valores ao longo do tempo.
 
-###Entidade:
+### Entidades:
 
- Meta
-	Atributos:
-    - Objetivo : Descricao
-    - Dono
-    - Valor atual
-    - Valor a ser alcançado
- Usuario	
-	Açoes:
-    - Criar metas
-Sala
-	Atributos:
-	- [Contribuidores] : Array
-	- Meta
+**Meta**
+Atributos:
+- Descricao do objetivo
+- Dono
+- Valor atual
+- Valor a ser alcançado
+
+**Usuario**
+Açoes:
+- Criar metas
+
+**Sala**
+Atributos:
+- [Contribuidores] : Array
+- Meta
+- Alerta
