@@ -1,4 +1,4 @@
-package br.com.porkrinho.controller;
+package br.com.porkrinho.controller.usuario;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.porkrinho.controller.Logica;
+
 @WebServlet("/Usuario")
-public class Usuario extends HttpServlet {
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Usuario() {
+    public UsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

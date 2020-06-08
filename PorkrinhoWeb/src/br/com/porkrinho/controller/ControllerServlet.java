@@ -25,7 +25,7 @@ public class ControllerServlet extends HttpServlet {
 	        try {
 	            Class classe = Class.forName(nomeDaClasse);
 
-	            Logica logica = (Logica) classe.newInstance();
+	            Logica logica = (Logica) classe.getConstructor().newInstance();
 	            String pagina = logica.executa(request, response);
 
 	            request.getRequestDispatcher(pagina).forward(request, response);

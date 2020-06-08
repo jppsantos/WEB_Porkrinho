@@ -1,4 +1,4 @@
-package br.com.porkrinho.controller;
+package br.com.porkrinho.controller.meta;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.porkrinho.controller.Logica;
+
 @WebServlet("/Meta")
-public class Meta extends HttpServlet {
+public class MetaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Meta() {
+    public MetaServlet() {
         super();
     }
 
