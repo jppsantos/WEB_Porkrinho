@@ -23,16 +23,16 @@ public class MetaDAO {
 	}
 	
 	public boolean cadastraMeta(MetaBean metaBean) {
-		String sql = "INSERT INTO meta (id_dono,titulo, descricao, valorMeta, dataLimite, ehPublico, imagem) values(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Meta (dono,titulo, descricao, valorMeta, dataLimite, ehPublico, imagem) values(?,?,?,?,?,?,?)";
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, metaBean.getUsuarioId());
-			ps.setString(2, metaBean.getTitulo());
-			ps.setString(3, metaBean.getDescricao());
-			ps.setDouble(4, metaBean.getValorMeta());
-			ps.setDate(5, metaBean.getDataLimite());
-			ps.setBoolean(6, metaBean.getEhPublico());
+			ps.setInt(0, metaBean.getUsuarioId());
+			ps.setString(1, metaBean.getTitulo());
+			ps.setString(2, metaBean.getDescricao());
+			ps.setDouble(3, metaBean.getValorMeta());
+			ps.setDate(4, metaBean.getDataLimite());
+			ps.setBoolean(5, metaBean.getEhPublico());
 			ps.setString(6, metaBean.getPathImg());
 			ps.execute();
 			ps.close();
@@ -43,7 +43,7 @@ public class MetaDAO {
 	}
 
 	public ArrayList<MetaBean> listarMinhasMetas(int idUsuario){
-		String sql = "SELECT * FROM meta WHERE id_dono ='"+idUsuario+"'";
+		String sql = "SELECT * FROM Meta WHERE id_dono ='"+idUsuario+"'";
 		
 		try {
 			st = conn.createStatement();
@@ -61,7 +61,7 @@ public class MetaDAO {
 	}
 	
 	public ArrayList<MetaBean> listarTodasMetas(){
-		String sql = "SELECT * FROM meta";
+		String sql = "SELECT * FROM Meta";
 		
 		try {
 			st = conn.createStatement();
@@ -94,7 +94,7 @@ public class MetaDAO {
 	
 	public boolean excluirMeta(int id) {
 		
-		String sql = "DELETE FROM meta WHERE id_meta = '"+id+"'";
+		String sql = "DELETE FROM Meta WHERE idMeta = '" + id + "'";
 		
 		try {
 			st = conn.createStatement();
@@ -126,14 +126,14 @@ public class MetaDAO {
 	}
 	
 	public MetaBean buscarPorId(int id) {
-		String sql = "SELECT * FROM meta WHERE id_meta = '"+id+"'";
+		String sql = "SELECT * FROM meta WHERE idMeta = '"+id+"'";
 		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			rs.next();
-			MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-			metaBean.setId(rs.getInt("id_meta"));
+			MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
+			metaBean.setId(rs.getInt("idMeta"));
 			rs.close();
 			st.close();
 			return metaBean;
