@@ -3,7 +3,7 @@ package br.com.porkrinho.bean;
 import java.sql.Date;
 
 public class MetaBean {
-	private int id;
+	private int idMeta;
 	private int usuarioId;
 	private String titulo;
 	private String descricao;
@@ -82,10 +82,10 @@ public class MetaBean {
 	}
 
 	public int getId() {
-		return id;
+		return idMeta;
 	}
-	public void setIdMeta(int idMeta) {
-		this.id = idMeta;
+	public void setId(int idMeta) {
+		this.idMeta = idMeta;
 	}
 
 	public int getUsuarioId() {

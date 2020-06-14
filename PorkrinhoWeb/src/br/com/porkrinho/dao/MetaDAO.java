@@ -50,7 +50,7 @@ public class MetaDAO {
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
 				MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-				metaBean.setIdMeta(rs.getInt("id_meta"));
+				metaBean.setId(rs.getInt("id_meta"));
 				lista.add(metaBean);
 			}
 			
@@ -68,7 +68,7 @@ public class MetaDAO {
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
 				MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-				metaBean.setIdMeta(rs.getInt("id_meta"));
+				metaBean.setId(rs.getInt("id_meta"));
 				lista.add(metaBean);
 			}
 			
@@ -133,7 +133,7 @@ public class MetaDAO {
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			rs.next();
 			MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-			metaBean.setIdMeta(rs.getInt("id_meta"));
+			metaBean.setId(rs.getInt("id_meta"));
 			rs.close();
 			st.close();
 			return metaBean;
