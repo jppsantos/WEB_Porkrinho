@@ -2,6 +2,7 @@ package br.com.porkrinho.dao;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class MetaDAO {
 			ps.setString(1, metaBean.getTitulo());
 			ps.setString(2, metaBean.getDescricao());
 			ps.setDouble(3, metaBean.getValorMeta());
-			ps.setDate(4, metaBean.getDataLimite());
+			ps.setDate(4, new java.sql.Date(metaBean.getDataLimite().getTime()));
 			ps.setBoolean(5, metaBean.getEhPublico());
 			ps.setString(6, metaBean.getPathImg());
 			ps.execute();
