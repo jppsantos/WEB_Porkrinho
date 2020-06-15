@@ -27,7 +27,7 @@ public class DoacaoDAO {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setDate(0, doacaoBean.getData());
+			ps.setDate(0, new java.sql.Date(doacaoBean.getData().getTime()));
 			ps.setDouble(1, doacaoBean.getValor());
 			ps.setString(2, doacaoBean.getMensagem());
 			ps.setInt(3, doacaoBean.getIdMeta());

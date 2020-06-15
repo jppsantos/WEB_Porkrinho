@@ -1,6 +1,6 @@
 package br.com.porkrinho.controller.doacao;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

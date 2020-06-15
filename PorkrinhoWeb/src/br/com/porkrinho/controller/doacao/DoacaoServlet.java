@@ -29,7 +29,7 @@ public class DoacaoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parametro = request.getParameter("logica");
-        String nomeDaClasse = "br.com.controller." + parametro;
+        String nomeDaClasse = "br.com.porkrinho.controller.doacao." + parametro;
 
         try {
             Class classe = Class.forName(nomeDaClasse);

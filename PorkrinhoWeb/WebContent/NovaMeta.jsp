@@ -49,8 +49,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2">Data Limite</label>
 						<div class="col-sm-7">
-							<input type="datetime" class="form-control" name="txtData"
-							placeholder="Em que data espera que sua data se cumpra?">
+							<input type="datetime" class="form-control" name="txtData">
 						</div>
 					</div>
 					
