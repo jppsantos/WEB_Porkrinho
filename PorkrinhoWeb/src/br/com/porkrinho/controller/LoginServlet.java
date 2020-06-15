@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		UsuarioBO usuarioBo = new UsuarioBO();
 		if (usuarioBo.login(user, password)) {
 			request.setAttribute("lista", new MetaBO().listarTodasMetas());
-			request.getRequestDispatcher("").forward(request, response);
+			request.getRequestDispatcher("TratarMeta/ListarTodasMetas.jsp").forward(request, response);
 		}else {
 			request.setAttribute("erro", "Wrong User or Password, Please try again! ");
 			request.getRequestDispatcher("index.jsp").forward(request, response);

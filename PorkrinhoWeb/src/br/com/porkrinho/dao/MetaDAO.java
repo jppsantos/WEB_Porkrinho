@@ -5,8 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
-
+import java.util.Date;
 
 import br.com.porkrinho.bean.MetaBean;
 
@@ -43,7 +42,7 @@ public class MetaDAO {
 	}
 
 	public ArrayList<MetaBean> listarMinhasMetas(int idUsuario){
-		String sql = "SELECT * FROM Meta WHERE id_dono ='"+idUsuario+"'";
+		String sql = "SELECT * FROM Meta WHERE dono ='"+idUsuario+"'";
 		
 		try {
 			st = conn.createStatement();
@@ -67,8 +66,9 @@ public class MetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
-				MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-				metaBean.setId(rs.getInt("id_meta"));
+				MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valorMeta"), rs.getString("imagem"), rs.getDate("dataLimite"), rs.getBoolean("ehPublico"));
+				metaBean.setId(rs.getInt("idMeta"));
+				metaBean.setValorMeta(rs.getDouble("valor"));
 				lista.add(metaBean);
 			}
 			

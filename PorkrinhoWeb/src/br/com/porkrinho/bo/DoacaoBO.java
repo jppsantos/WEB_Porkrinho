@@ -8,13 +8,13 @@ import br.com.porkrinho.dao.DoacaoDAO;
 
 public class DoacaoBO {
 	
-	public String cadastrarUsuario(Integer idMeta, Integer idUsuario, Date data, Double valor, String mensagem, Boolean ehAnonimo, Boolean ehNotificado) {
+	public String cadastrarDoacao(Integer idMeta, Integer idUsuario, Date data, Double valor, String mensagem, Boolean ehAnonimo, Boolean ehNotificado) {
 		DoacaoBean doacaoBean = new DoacaoBean(idMeta, idUsuario, data, valor, mensagem, ehAnonimo, ehNotificado);
 		
 		if (new DoacaoDAO().cadastraDoacao(doacaoBean)) {
-			return "";
+			return "TratarMeta/ListarTodasMetas.jsp";
 		}
-		return "";
+		return "NovaDoacao.jsp";
 	}
 	
 	public List<DoacaoBean> listarMinhasDoacoes(int idUsuario){ 

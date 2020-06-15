@@ -24,7 +24,7 @@ public class AtualizarMeta implements Logica{
 			if (meta != null) {
 				request.setAttribute("titulo", meta.getTitulo());
 
-				resultado = "formatualizar";
+				resultado = "formatualizar.jsp";
 			}
 		}else {
 			//variaveis pra ser atualizadas
