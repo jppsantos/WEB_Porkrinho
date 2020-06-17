@@ -37,7 +37,7 @@
 						
 					</thead>
 					<tr>
-					<% 
+					<%-- <% 
 					List<MetaBean> lista = new MetaDAO().listarTodasMetas();
 					
 					for(MetaBean meta : lista){%>
@@ -52,17 +52,20 @@
 							<a href="http://localhost:8080/PorkrinhoWeb/DoacaoServlet?logica=CadastrarDoacao&idMeta=<%=meta.getId() %>&action=form" class="fas">Doar</a>
 						</td>
 					  <% } %>
-			        </tr>
-					<%-- <c:forEach items="${lista}" var="meta">
+			        </tr> --%>
+					<c:forEach items="${lista}" var="meta">
 					<tr>
 						<td>${meta.getTitulo()}</td>
 						<td>${meta.getDescricao()}</td>
 						<td>${meta.getValorMeta()}</td>
 						<td>${meta.getValorAtual()}</td>
 						<td>${meta.getDataLimite()}</td>
-						<td>${carro.getUsuarioId()}</td>							
+						<td>${meta.getUsuarioId()}</td>	
+						<td>
+							<a href="http://localhost:8080/PorkrinhoWeb/DoacaoServlet?logica=CadastrarDoacao&idMeta=${meta.getId()}&action=form" class="fas">Doar</a>
+						</td>						
 					</tr>
-					</c:forEach --%>
+					</c:forEach>
 			    </table>
 			</div>
 		</div>

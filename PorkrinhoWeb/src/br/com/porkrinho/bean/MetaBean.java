@@ -13,13 +13,14 @@ public class MetaBean {
 	private Date dataLimite;
 	private boolean ehPublico;
 	
-	public MetaBean(int usuarioId, String titulo, String descricao, Double valorMeta, String pathImg,
+	public MetaBean(int usuarioId, String titulo, String descricao, Double valorMeta, Double valor, String pathImg,
 			Date dataLimite, boolean ehPublico) {
 		super();
 		this.usuarioId = usuarioId;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.valorMeta = valorMeta;
+		this.valorAtual = valor;
 		this.pathImg = pathImg;
 		this.dataLimite = dataLimite;
 		this.ehPublico = ehPublico;
