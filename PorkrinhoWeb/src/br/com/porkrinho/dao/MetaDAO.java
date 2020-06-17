@@ -20,8 +20,9 @@ public class MetaDAO {
 		lista = new ArrayList<MetaBean>();
 	}
 	
-	public boolean cadastraMeta(MetaBean metaBean) {
-		String sql = "INSERT INTO Meta (dono,titulo, descricao, valorMeta, dataLimite, ehPublico, imagem) values(?,?,?,?,?,?,?)";
+	public boolean cadastrarMeta(MetaBean metaBean) {
+		String sql = "INSERT INTO meta (dono,titulo, descricao, valorMeta, dataLimite, ehPublico, imagem) values(?,?,?,?,?,?,?)";
+		
 		try {
 			System.out.println("adsfas asdj;als asdlj _------------------------------------------------");
 			ps = conn.prepareStatement(sql);
@@ -50,8 +51,8 @@ public class MetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
-				MetaBean metaBean = new MetaBean(rs.getInt("id_dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
-				metaBean.setId(rs.getInt("id_meta"));
+				MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valorMeta"), rs.getDouble("valor"), rs.getString("imagem"), rs.getDate("dataLimite"), rs.getBoolean("ehPublico"));
+				metaBean.setId(rs.getInt("idMeta"));
 				lista.add(metaBean);
 			}
 			
@@ -68,9 +69,8 @@ public class MetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			while (rs.next()) {
-				MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valorMeta"), rs.getString("imagem"), rs.getDate("dataLimite"), rs.getBoolean("ehPublico"));
+				MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valorMeta"),rs.getDouble("valor"), rs.getString("imagem"), rs.getDate("dataLimite"), rs.getBoolean("ehPublico"));
 				metaBean.setId(rs.getInt("idMeta"));
-				metaBean.setValorMeta(rs.getDouble("valor"));
 				lista.add(metaBean);
 			}
 			
@@ -80,19 +80,19 @@ public class MetaDAO {
 		return lista;
 	}
 	
-	public boolean alugarCarro(int id) {
-		String sql = "UPDATE carro SET taAlugado = '"+1+"' WHERE idcarro = '"+id+"'";
-		
-		try {
-			st = conn.createStatement();
-			st.executeUpdate(sql);
-			st.close();
-			return true;
-		} catch (Exception e) {
-			System.out.println(e);
-			return false;
-		}
-	}
+//	public boolean alugarCarro(int id) {
+//		String sql = "UPDATE carro SET taAlugado = '"+1+"' WHERE idcarro = '"+id+"'";
+//		
+//		try {
+//			st = conn.createStatement();
+//			st.executeUpdate(sql);
+//			st.close();
+//			return true;
+//		} catch (Exception e) {
+//			System.out.println(e);
+//			return false;
+//		}
+//	}
 	
 	public boolean excluirMeta(int id) {
 		
@@ -134,7 +134,7 @@ public class MetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);//retorna uma lista de valores, varre a lista e bota na this.lista
 			rs.next();
-			MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valor_meta"), rs.getString("img"), rs.getDate("data_limite"), rs.getBoolean("eh_publico"));
+			MetaBean metaBean = new MetaBean(rs.getInt("dono"), rs.getString("titulo"), rs.getString("descricao"), rs.getDouble("valorMeta"), rs.getDouble("valor"), rs.getString("imagem"), rs.getDate("dataLimite"), rs.getBoolean("ehPublico"));
 			metaBean.setId(rs.getInt("idMeta"));
 			rs.close();
 			st.close();

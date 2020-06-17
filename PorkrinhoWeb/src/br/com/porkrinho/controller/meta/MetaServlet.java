@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.porkrinho.controller.Logica;
 
-@WebServlet("/Meta")
+@WebServlet("/MetaServlet")
 public class MetaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +26,10 @@ public class MetaServlet extends HttpServlet {
 
             Logica logica = (Logica) classe.newInstance();
             String pagina = logica.executa(request, response);
-
+            
             request.getRequestDispatcher(pagina).forward(request, response);
+            
+            
 
         } catch (Exception e) { 
             throw new ServletException("A lógica de negócios causou uma exceção", e);

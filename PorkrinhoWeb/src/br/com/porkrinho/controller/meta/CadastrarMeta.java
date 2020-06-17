@@ -23,10 +23,10 @@ public class CadastrarMeta implements Logica{
 //		Date data = Date.valueOf(request.getParameter("txtData"));
 		Date data = new java.util.Date();
 		
-		String resultado = metaBO.cadastraMeta(0, titulo, descricao, valor, "", data, ehPublico);
+		String resultado = metaBO.cadastrarMeta(0, titulo, descricao, valor, "", data, ehPublico);
 		
-		if (resultado == "") {
-			request.setAttribute("lista", new MetaBO().listarTodasMetas());
+		if (resultado == "TratarMeta/ListarMinhasMetas.jsp") {
+			request.setAttribute("lista", new MetaBO().listarMinhasMetas(0));
 		}else {
 			request.setAttribute("erro", "Erro ao cadastrar meta.");
 		}		

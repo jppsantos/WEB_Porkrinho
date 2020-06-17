@@ -19,7 +19,7 @@
 			<%-- <%@include file="/WEB-INF/jsp/MenuBar.jsp"%> --%>
 			<div class="card-body">
 				<h2>Insira aqui os dados da sua nova Meta</h2>
-				<form action="Meta" method="post">
+				<form action="MetaServlet" method="post">
 					<input type="hidden" name="logica" value="CadastrarMeta">
 					
 					<div class="form-group row">
@@ -62,6 +62,7 @@
 					
 					<button type="submit" class="btn btn-primary">Cadastrar Meta</button>
 				</form>
+				<h6 class="text-danger">${erro}</h6>
 			</div>
 		</div>
 

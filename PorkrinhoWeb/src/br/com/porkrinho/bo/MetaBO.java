@@ -8,15 +8,15 @@ import br.com.porkrinho.dao.MetaDAO;
 
 public class MetaBO {
 	
-	public String cadastraMeta(int usuarioId, String titulo, String descricao, Double valorMeta, String pathImg,
+	public String cadastrarMeta(int usuarioId, String titulo, String descricao, Double valorMeta, String pathImg,
 			Date dataLimite, boolean ehPublico) {
 
-		MetaBean metaBean = new MetaBean( usuarioId, titulo, descricao, valorMeta, pathImg, dataLimite, ehPublico);
+		MetaBean metaBean = new MetaBean( usuarioId, titulo, descricao, valorMeta, 0.0, pathImg, dataLimite, ehPublico);
 
-		if(new MetaDAO().cadastraMeta(metaBean)) {
-			return "";
+		if(new MetaDAO().cadastrarMeta(metaBean)) {
+			return "TratarMeta/ListarMinhasMetas.jsp";
 		}
-		return "";
+		return "NovaMeta.jsp";
 	}
 
 	public List<MetaBean> listarMinhasMetas(int idUsuario){ 
