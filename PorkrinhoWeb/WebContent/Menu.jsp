@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
  <h3>Page Initial</h3>
 	
-<a href="TratarMeta/FormCadastrarMeta.jsp" class="btn btn-outline-primary text-center">Cadastrar Meta</a>
+<a href="NovaMeta.jsp" class="btn btn-outline-primary text-center">Cadastrar Meta</a>
 
 <form method="get" action="MetaServlet">
 	<div class="form-group row">

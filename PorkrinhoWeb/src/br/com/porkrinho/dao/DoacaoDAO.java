@@ -27,13 +27,13 @@ public class DoacaoDAO {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setDate(0, new java.sql.Date(doacaoBean.getData().getTime()));
-			ps.setDouble(1, doacaoBean.getValor());
-			ps.setString(2, doacaoBean.getMensagem());
-			ps.setInt(3, doacaoBean.getIdMeta());
-			ps.setInt(4, doacaoBean.getIdUsuario());
-			ps.setBoolean(5, doacaoBean.getEhAnonimo());
-			ps.setBoolean(6, doacaoBean.getEhNotificado());
+			ps.setDate(1, new java.sql.Date(doacaoBean.getData().getTime()));
+			ps.setDouble(2, doacaoBean.getValor());
+			ps.setString(3, doacaoBean.getMensagem());
+			ps.setInt(4, doacaoBean.getIdMeta());
+			ps.setInt(5, doacaoBean.getIdUsuario());
+			ps.setBoolean(6, doacaoBean.getEhAnonimo());
+			ps.setBoolean(7, doacaoBean.getEhNotificado());
 			
 			ps.execute();
 			ps.close();
@@ -173,9 +173,9 @@ public class DoacaoDAO {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(0, doacaoBean.getMensagem());
-			ps.setBoolean(1, doacaoBean.getEhAnonimo());
-			ps.setBoolean(2, doacaoBean.getEhNotificado());
+			ps.setString(1, doacaoBean.getMensagem());
+			ps.setBoolean(2, doacaoBean.getEhAnonimo());
+			ps.setBoolean(3, doacaoBean.getEhNotificado());
 			
 			ps.execute();
 			ps.close();

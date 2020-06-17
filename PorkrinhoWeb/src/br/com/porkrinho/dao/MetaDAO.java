@@ -2,11 +2,9 @@ package br.com.porkrinho.dao;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 
 import br.com.porkrinho.bean.MetaBean;
 
@@ -24,20 +22,23 @@ public class MetaDAO {
 	
 	public boolean cadastraMeta(MetaBean metaBean) {
 		String sql = "INSERT INTO Meta (dono,titulo, descricao, valorMeta, dataLimite, ehPublico, imagem) values(?,?,?,?,?,?,?)";
-		
 		try {
+			System.out.println("adsfas asdj;als asdlj _------------------------------------------------");
 			ps = conn.prepareStatement(sql);
-			ps.setInt(0, metaBean.getUsuarioId());
-			ps.setString(1, metaBean.getTitulo());
-			ps.setString(2, metaBean.getDescricao());
-			ps.setDouble(3, metaBean.getValorMeta());
-			ps.setDate(4, new java.sql.Date(metaBean.getDataLimite().getTime()));
-			ps.setBoolean(5, metaBean.getEhPublico());
-			ps.setString(6, metaBean.getPathImg());
+			ps.setInt(1, metaBean.getUsuarioId());
+			ps.setString(2, metaBean.getTitulo());
+			ps.setString(3, metaBean.getDescricao());
+			ps.setDouble(4, metaBean.getValorMeta());
+			ps.setDate(5, new java.sql.Date(metaBean.getDataLimite().getTime()));
+			ps.setBoolean(6, metaBean.getEhPublico());
+			ps.setString(7, metaBean.getPathImg());
 			ps.execute();
 			ps.close();
+			
+			
 			return true;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;		
 		}
 	}

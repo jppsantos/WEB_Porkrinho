@@ -10,7 +10,7 @@ public class ConnectionFactory {
 		String password = "password";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			return DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na conexao: "+e);
