@@ -3,25 +3,24 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Porkrinho</display-name>
+  <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>Porkrinho Service</servlet-name>
     <!-- For Jersey 1.x -->
-    <!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+      <!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
     <!-- For Jersey 2.x -->
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-  <init-param>
-    <!-- For Jersey 1.x -->
-    <!-- <param-name>com.sun.jersey.config.property.packages</param-name> -->
-    <!-- For Jersey 2.x -->
-    <param-name>jersey.config.server.provider.packages</param-name>
-    <param-value>br.com.porkrinho</param-value>
-  </init-param>
-
-  <load-on-startup>1</load-on-startup>
+    <init-param>
+      <!-- For Jersey 1.x -->
+      <!-- <param-name>com.sun.jersey.config.property.packages</param-name> -->
+      <!-- For Jersey 2.x -->
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>br.com.porkrinho</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
-    <servlet-mapping>
-    <servlet-name>Porkrinho Service </servlet-name>
+  <servlet-mapping>
+    <servlet-name>Porkrinho Service</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
 </web-app>
