@@ -1,6 +1,8 @@
 package br.com.porkrinho.bean;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MarkBean {
   private int idMark;
@@ -13,13 +15,15 @@ public class MarkBean {
   private Date finalDate;
   private boolean isPublic;
 
-  public MarkBean(int idUser, String title, String description, double currentValue, double markValue, String pathImg, boolean isPublic) {
+  public MarkBean(int idUser, String title, String description, double currentValue, double markValue, String pathImg, Date finalDate, boolean isPublic) {
     this.idUser = idUser;
     this.title = title;
     this.description = description;
     this.currentValue = currentValue;
     this.markValue = markValue;
     this.pathImg = pathImg;
+    this.finalDate = finalDate;
+    //this.finalDate = LocalDate.parse(finalDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     this.isPublic = isPublic;
   }
 
@@ -81,10 +85,12 @@ public class MarkBean {
 
   public Date getFinalDate() {
     return finalDate;
+    //return finalDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
   }
 
   public void setFinalDate(Date finalDate) {
     this.finalDate = finalDate;
+    //this.finalDate = LocalDate.parse(finalDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
   }
 
   public boolean isPublic() {

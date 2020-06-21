@@ -20,9 +20,9 @@ public class UserServlet {
   private static Gson gson = new Gson();
 
   @GET
-  @Path("/{userId}")
+  @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public String getUserById(@PathParam("userId") int id) {
+  public String getUserById(@PathParam("id") int id) {
     try {
       return userBO.getUserById(id);
     } catch (Exception e) {
@@ -31,9 +31,9 @@ public class UserServlet {
   }
 
   @GET
-  @Path("/find/{userCpf}")
+  @Path("/find/{cpf}")
   @Produces(MediaType.APPLICATION_JSON)
-  public String getUserById(@PathParam("userCpf") String cpf) {
+  public String getUserById(@PathParam("cpf") String cpf) {
     try {
       return userBO.getUserByCpf(gson.fromJson(cpf, String.class));
     } catch (Exception e) {
@@ -42,7 +42,6 @@ public class UserServlet {
   }
 
   @POST
-  @Path("add")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public String addUser(String json) {
@@ -51,10 +50,7 @@ public class UserServlet {
       String result = userBO.addUser(user);
 
       return result;
-      //URI uri = URI.create(result);
-      //return Response.seeOther(uri).build();
     } catch (Exception e) {
-      //return Response.status(Status.BAD_REQUEST).entity("ERROR: "+e).build();
       return "ERROR: "+e;
     }
   }

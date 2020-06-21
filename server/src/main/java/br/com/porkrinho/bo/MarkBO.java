@@ -19,6 +19,36 @@ public class MarkBO {
 		}
   }
 
+  public String updateMark(MarkBean mark) {
+    if(markDAO.updateMark(mark)) {
+      return gson.toJson("ok");
+    } else {
+      return gson.toJson("Erro ao atualizar meta!");
+    }
+  }
+
+  public String deleteMark(int id) {
+    for(MarkBean mark : markDAO.getAllMarks()) {
+      if(mark.getIdMark() == id) {
+        if(markDAO.deleteMark(mark)) {
+          return gson.toJson("ok");
+        } else {
+          return gson.toJson("Erro ao deletar meta!");
+        }
+      }
+    }
+    return gson.toJson("Meta não encontrada!");
+  }
+
+  public MarkBean getMarkById(int id) {
+    for(MarkBean mark : markDAO.getAllMarks()) {
+      if(mark.getIdMark() == id) {
+        return mark;
+      }
+    }
+    return null;
+  }
+
   public List<MarkBean> listAllMarks() {
     return markDAO.getAllMarks();
   }
