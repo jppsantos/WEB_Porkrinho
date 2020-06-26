@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/MarkBean.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/BankServlet.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/BankBean.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/ConnectionFactory.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/MarkBO.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/UserServlet.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/UserBean.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/BankBO.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/BankDAO.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/UserBO.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/UserDAO.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/MarkServlet.java
-/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/MarkDAO.java
-=======
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/UserServlet.java
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/ConnectionFactory.java
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/MarkBean.java
@@ -26,4 +11,4 @@
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/MarkDAO.java
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/MarkServlet.java
 /Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/BankBO.java
->>>>>>> 6db712005b958e42620d3376b06a2a32c111be77
+/Users/joaopaulo/Desktop/PorkrinhoGit/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/filter/Cors.java

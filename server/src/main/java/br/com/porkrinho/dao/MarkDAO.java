@@ -21,7 +21,7 @@ public class MarkDAO {
   }
 
   public boolean addMark(MarkBean mark) {
-    String sql = "INSERT INTO meta (iddono, titulo, descricao, valoratual, valormeta, imagem, datalimite, publica)"
+    String sql = "INSERT INTO meta (idDono, titulo, descricao, valoratual, valormeta, imagem, datalimite, publica)"
       +"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
       try {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css%22%3E">
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js%22%3E"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js%22%3E"></script> -->
+    <meta charset="UTF-8">
+
+    <link 	rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        
+    <title>Listar Metas</title>
+</head>
+<body style="background-color:#FAE4E5;" onload="getAllMarks()">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand/logo -->
+		<a class="navbar-brand" href="listMarkScreen.htm">
+			<img src="porkri.png" alt="logo" style="width:100px;">
+		</a>
+		
+		<!-- Links -->
+		<ul class="navbar-nav">
+		<!-- <li class="nav-item">
+			<a class="nav-link" href="createDonationScreen.htm">Doacao</a>
+		</li> -->
+		<li class="nav-item">
+			<a class="nav-link" href="createMarkScreen.htm">Metas</a>
+        </li>
+        <li class="nav-item">
+			<a class="nav-link" href="listMarkScreen.htm">Listar</a>
+		</li>
+		</ul>
+
+		<ul class="navbar-nav ml-auto">
+            <li>
+				<a href="loginScreen.htm" ><button type="button" class="btn btn-secondary btn-small btn-nav mr-3">Login</button></a>
+			</li>
+			<li>
+				<a href="createUserScreen.htm"><button type="button" class="btn btn-primary btn-small btn-nav" >Sign up</button></a>
+			</li>
+		  </ul>
+	</nav>
+
+    <div class="container col-sm-12 mt-5">
+        <div class="card text-center ">
+            <div class="card-body">
+                <div class="row">
+
+                </div>
+                <table class="table" id="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descricao</th>
+                        <th>Valor Atual</th>
+                        <th>Valor Alcançado</th>
+                        <!-- <th>Data Limite</th> -->
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+
+                </table>
+            </div>
+        </div>
+        <div class="card text-center">
+            <h3 id="error" class="text-danger"></h3>
+            <!-- <input type="button" class="btn btn-secondary btn-small col-md-4 mt-5 " id="bt" onclick="doar();" value="Doe"> -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
