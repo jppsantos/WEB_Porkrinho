@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Nova Meta</title>
+
+    <link 	rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
+
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body style="background-color:#FAE4E5;" onload="verifiyUser();">
+
+  <script>
+  	fetch("./navBar.htm").then(response => {
+  			return response.text();
+  	}).then(data => {
+  			document.querySelector("header").innerHTML = data;
+  	});
+  </script>
+  <div class="container">
+  	<header></header>
+  </div>
+
+	<div class="container mt-5">
+		<div class="card text-center">
+			<!-- <%@include file="/WEB-INF/jsp/MenuBar.jsp"%> -->
+			<div class="card-body">
+        <h6 id="error" class="text-danger">dd</h6>
+				<h2>Insira aqui os dados da sua nova Meta</h2>
+				<form action="" method="post">
+					<div class="form-group row">
+						<label class="col-sm-2">Titulo</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="txtTitulo" id ="title"
+								placeholder="Digite aqui um belo titulo para sua Meta">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">Descricao</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="txtDescricao" id ="description"
+								placeholder="Explique aqui do que exatamente se trata a sua Meta">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">Valor Alvo</label>
+						<div class="col-sm-7">
+							<input type="number" class="form-control" name="txtValor" id ="markValue"
+							placeholder="Este eh o valor que você deseja atingir" >
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">Data Limite</label>
+						<div class="col-sm-7">
+							<input type="datetime" class="form-control" name="txtData" id ="date">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">Sua meta eh publica?</label>
+						<div class="col-sm-7">
+							<input type="checkbox" class="form-control" name="ehPublico" id ="isPublic">
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary" onclick="addMark()">Cadastrar Meta</button>
+					<h3 id="error" class="text-danger"></h3>
+				</form>
+				<!-- <h6 class="text-danger">${erro}</h6> -->
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

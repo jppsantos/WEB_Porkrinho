@@ -25,14 +25,14 @@ function exemplo3() {
 	document.getElementById("mostrar").innerHTML = nomes;
 }
 
-// Remover o ultimo valor no array  
+// Remover o ultimo valor no array
 function exemplo4() {
 	var nomes = ["Bernardo","Joao","Caio","Ana","Tiago"];
 	nomes.pop();
 	document.getElementById("mostrar").innerHTML = nomes;
 }
 
-//Unir/Concaternar valores dois arrays 
+//Unir/Concaternar valores dois arrays
 function exemplo5() {
 	var nomes = ["Bernardo","Joao","Caio","Ana","Tiago"];
 	var nomes2 = ["Gerson","Tito","Marcos","Bartolomeu","Ferreira"];
@@ -50,6 +50,11 @@ function exemplo6() {
 function exemplo7() {
 	document.getElementById("mostrar").innerHTML = Math.min(5,8,2,5,7);
 }
+// vamos chamar esse metodo com o evento onchange
+function exemplo8() {
+	var nome = document.getElementById("slcNomes").value;
+    alert(nome);
+}
 </script>
 
 <meta charset="UTF-8">
@@ -59,11 +64,15 @@ function exemplo7() {
 
 <p>Bom dia pessoal. Vamos iniciar nossa <mark>semana programando!</mark></p>
 
-<div id = "mostrar">
-	
-</div>
+<div id = "mostrar"></div>
 
 <input type = "button" value="Chamar funcao" onclick="exemplo7();">
+<br></br>
+<select class="" name="" id="slcNomes" onchange="">
+    <option value="Debora">Debora</option>
+    <option value="Gustavo">Gustavo</option>
+    <option value="Joao">Joao</option>
+</select>
 
 </body>
 </html>
