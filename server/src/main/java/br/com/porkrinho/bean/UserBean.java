@@ -4,30 +4,32 @@ public class UserBean {
   private int idUser;
 	private String name;
 	private String lastName;
-	private String cpf;
+  private String cpf;
+  private int age;
 	private String email;
-	private String password;
-	private String phone;
-	private int idBank;
-  private int agency;
-  private int account;
-  private String pathImg;
+  private String phone;
+  private String password;
+  private int bankAgency;
+  private int bankAccount;
+  private String imgPath;
+  private int idBank;
 
-  public UserBean(String name, String lastName, String cpf, String email, String password, String phone, int idBank, int agency, int account, String pathImg) {
+  public UserBean(String name, String lastName, String cpf, int age, String email, String phone, String password, int bankAgency, int bankAccount, String imgPath, int idBank) {
     this.name = name;
     this.lastName = lastName;
     this.cpf = cpf;
+    this.age = age;
     this.email = email;
-    this.password = password;
     this.phone = phone;
+    this.password = password;
+    this.bankAgency = bankAgency;
+    this.bankAccount = bankAccount;
+    this.imgPath = imgPath;
     this.idBank = idBank;
-    this.agency = agency;
-    this.account = account;
-    this.pathImg = pathImg;
   }
-  
-  public UserBean(String email, String password) {
-    this.email = email;
+
+  public UserBean(String cpf, String password) {
+    this.cpf = cpf;
     this.password = password;
   }
 
@@ -63,20 +65,20 @@ public class UserBean {
     this.cpf = cpf;
   }
 
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
   public String getEmail() {
     return email;
   }
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
   public String getPhone() {
@@ -87,34 +89,43 @@ public class UserBean {
     this.phone = phone;
   }
 
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public int getBankAgency() {
+    return bankAgency;
+  }
+
+  public void setBankAgency(int bankAgency) {
+    this.bankAgency = bankAgency;
+  }
+
+  public int getBankAccount() {
+    return bankAccount;
+  }
+
+  public void setBankAccount(int bankAccount) {
+    this.bankAccount = bankAccount;
+  }
+
+  public String getImgPath() {
+    return imgPath;
+  }
+
+  public void setImgPath(String imgPath) {
+    this.imgPath = imgPath;
+  }
+
   public int getIdBank() {
     return idBank;
   }
 
   public void setIdBank(int idBank) {
     this.idBank = idBank;
-  }
-
-  public int getAgency() {
-    return agency;
-  }
-
-  public void setAgency(int agency) {
-    this.agency = agency;
-  }
-
-  public int getAccount() {
-    return account;
-  }
-
-  public void setAccount(int account) {
-    this.account = account;
-  } 
-  public String getPathImg() {
-    return pathImg;
-  }
-
-  public void setPathImg(String pathImg) {
-    this.pathImg = pathImg;
   }
 }
