@@ -2,16 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Nova Meta</title>
+    <title>Cadastrar Novo Usuario</title>
 
     <link 	rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 		crossorigin="anonymous">
-	<script type="text/javascript" src="script.js"></script>
 </head>
 <body style="background-color:#FAE4E5;">
-
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
 		<a class="navbar-brand" href="listMarkScreen.htm">
@@ -23,7 +21,7 @@
 		<!-- <li class="nav-item">
 			<a class="nav-link" href="createDonationScreen.htm">Doacao</a>
 		</li> -->
-		<li class="nav-item active">
+		<li class="nav-item">
 			<a class="nav-link" href="createMarkScreen.htm">Metas</a>
 		</li>
 		<li class="nav-item">
@@ -45,51 +43,57 @@
 		<div class="card text-center">
 			<!-- <%@include file="/WEB-INF/jsp/MenuBar.jsp"%> -->
 			<div class="card-body">
-				<h2>Insira aqui os dados da sua nova Meta</h2>
+				<h2>Insira aqui os seus dados</h2>
 				<form action="" method="post">
 					<div class="form-group row">
-						<label class="col-sm-2">Titulo</label>
+						<label class="col-sm-2">Nome</label>
 						<div class="col-sm-7">
-							<input type="text" class="form-control" name="txtTitulo" id ="title"
-								placeholder="Digite aqui um belo titulo para sua Meta">
+							<input type="text" class="form-control" name="txtNome"
+								placeholder="Digite seu nome">
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-sm-2">Sobrenome</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="txtSobrenome"
+								placeholder="Sobrenome">
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-sm-2">CPF</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="txtCPF"
+								placeholder="000.000.000-00">
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-sm-2">Email</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="txtEmail"
+								placeholder="xxxx@mail.com">
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-sm-2">Senha</label>
+						<div class="col-sm-7">
+							<input type="password" class="form-control" name="txtEmail">
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-sm-2">Telefone</label>
+						<div class="col-sm-7">
+							<input type="number" class="form-control" name="txtEmail">
 						</div>
 					</div>
 					
-					<div class="form-group row">
-						<label class="col-sm-2">Descricao</label>
-						<div class="col-sm-7">
-							<input type="text" class="form-control" name="txtDescricao" id ="description"
-								placeholder="Explique aqui do que exatamente se trata a sua Meta">
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Valor Alvo</label>
-						<div class="col-sm-7">
-							<input type="number" class="form-control" name="txtValor" id ="markValue"
-							placeholder="Este eh o valor que você deseja atingir" >
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Data Limite</label>
-						<div class="col-sm-7">
-							<input type="datetime" class="form-control" name="txtData" id ="date">
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Sua meta eh publica?</label>
-						<div class="col-sm-7">
-							<input type="checkbox" class="form-control" name="ehPublico" id ="isPublic">
-						</div>
-					</div>
-					
-					<button type="submit" class="btn btn-primary" onclick="addMark()">Cadastrar Meta</button>
-					<h3 id="error" class="text-danger"></h3>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</form>
 				<!-- <h6 class="text-danger">${erro}</h6> -->
-				
 			</div>
 		</div>
 
