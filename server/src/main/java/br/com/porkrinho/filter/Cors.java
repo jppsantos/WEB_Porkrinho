@@ -1,4 +1,4 @@
-package br.com.porkrinho.filter;
+package br.com.porkrinho.Filter;
 
 import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;
