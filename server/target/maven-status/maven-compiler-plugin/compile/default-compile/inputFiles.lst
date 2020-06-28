@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/GoalBean.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/DonationBO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/GoalDAO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/utils/CORSFilter.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/BankService.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/BankBean.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/ConnectionFactory.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/DonationService.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/UserBean.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/BootyBean.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/UserService.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/BankBO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/BankDAO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/controller/GoalService.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/DonationBean.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/DonationDAO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/UserBO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/UserDAO.java
+/Users/ramonfsk/Documents/UCB/projetoWEB/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/GoalBO.java
+=======
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/UserBO.java
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bo/MarkBO.java
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/bean/MarkBean.java
@@ -12,3 +33,4 @@
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/Filter/Cors.java
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/UserDAO.java
 /Users/alinegomes/Documents/ProjetoFinalWeb_Vakinha/PorkrinhoWebProjetoFinal/server/src/main/java/br/com/porkrinho/dao/MarkDAO.java
+>>>>>>> d584e8f0576055b1119bc2482c21b64070966560

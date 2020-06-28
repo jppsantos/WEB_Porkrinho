@@ -3,11 +3,11 @@ package br.com.porkrinho.bean;
 public class BankBean {
   private int idBank;
   private String name;
-  private int codBank;
+  private int code;
 
-  public BankBean(String name, int codBank) {
+  public BankBean(String name, int code) {
     this.name = name;
-    this.codBank = codBank;
+    this.code = code;
   }
 
   public int getIdBank() {
@@ -26,11 +26,11 @@ public class BankBean {
     this.name = name;
   }
 
-  public int getCodBank() {
-    return codBank;
+  public int getCode() {
+    return code;
   }
 
-  public void setCodBank(int codBank) {
-    this.codBank = codBank;
+  public void setCode(int code) {
+    this.code = code;
   }
 }
