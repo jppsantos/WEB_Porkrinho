@@ -91,7 +91,7 @@ public class DonationDAO {
   public List<DonationBean> getByInt(String column, int value) {
     List<DonationBean> donations = new ArrayList<DonationBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" = "+value;
+    String sql = "SELECT * FROM donation WHERE "+column+" = "+value;
 
     try {
       st = conn.createStatement();
@@ -123,7 +123,7 @@ public class DonationDAO {
   public List<DonationBean> getByString(String column, String value) {
     List<DonationBean> donations = new ArrayList<DonationBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" LIKE '%"+value+"%'";
+    String sql = "SELECT * FROM donation WHERE "+column+" LIKE '%"+value+"%'";
 
     try {
       st = conn.createStatement();

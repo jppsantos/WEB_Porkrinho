@@ -55,8 +55,8 @@ public class BootyDAO {
           rs.getDate("date"), 
           rs.getDouble("value"), 
           rs.getString("status"), 
-          rs.getInt("idUser"), 
-          rs.getInt("idGoal")
+          rs.getInt("user_idUser"), 
+          rs.getInt("goal_idGoal")
         );
         booty.setIdBooty(rs.getInt("idBooty"));
         bootys.add(booty);
@@ -81,8 +81,8 @@ public class BootyDAO {
           rs.getDate("date"), 
           rs.getDouble("value"), 
           rs.getString("status"), 
-          rs.getInt("idUser"), 
-          rs.getInt("idGoal")
+          rs.getInt("user_idUser"), 
+          rs.getInt("goal_idGoal")
         );
         booty.setIdBooty(rs.getInt("idBooty"));
         bootys.add(booty);
@@ -107,8 +107,8 @@ public class BootyDAO {
           rs.getDate("date"), 
           rs.getDouble("value"), 
           rs.getString("status"), 
-          rs.getInt("idUser"), 
-          rs.getInt("idGoal")
+          rs.getInt("user_idUser"), 
+          rs.getInt("goal_idGoal")
         );
         booty.setIdBooty(rs.getInt("idBooty"));
         bootys.add(booty);

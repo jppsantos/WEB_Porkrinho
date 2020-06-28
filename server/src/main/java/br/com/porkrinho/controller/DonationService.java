@@ -45,7 +45,8 @@ public class DonationService {
   @Consumes(MediaType.APPLICATION_JSON)
   public String getUserByIdPost(String id) {
     try {
-      DonationBean donation = donationBO.getDonationById(Integer.parseInt(id));
+      DonationBean donation = gson.fromJson(id, DonationBean.class);
+      donation = donationBO.getDonationById(donation.getIdDonation());
       if(donation != null) {
         String json = gson.toJson(donation);
         return json;
