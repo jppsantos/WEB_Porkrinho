@@ -316,3 +316,8 @@ function findUserByCpf(cpf) {
     }
   }
 }
+
+function search(content){
+  // var content = document.getElementById("searchText").value;
+  alert(content);
+}
