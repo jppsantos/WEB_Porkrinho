@@ -60,7 +60,7 @@ function getAllGoals() {
         divCard.setAttribute('style', 'height: 500px');
         //
         const img = document.createElement('img');
-        img.setAttribute('width', '400px');
+        img.setAttribute('width', '200px');
         img.setAttribute('src', 'default.png');
         //
         const divCardBody = document.createElement('div');
@@ -345,9 +345,15 @@ function login(cpf, password) {
   // Seta tipo de requisição e URL com os parâmetros
   ajaxUser.open("POST", urlRoot + "/user/login", true);
 
-  // Envia a requisição
-  ajaxUser.send('{cpf: ' + cpf + ', password: "' + password + '"}');
+  // Seta tipo de requisição e URL com os parâmetros
+  ajaxUser.open("POST", urlRoot + "/user/login", true);
+    
+   ajaxUser.setRequestHeader("Content-Type", "application/json");
 
+  // Envia a requisição
+    var text = '{"cpf": "' + cpf + '", "password": "'+ password + '"}';
+  ajaxUser.send(text);
+  
   // Cria um evento para receber o retorno.
   ajaxUser.onreadystatechange = function () {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
@@ -361,6 +367,7 @@ function login(cpf, password) {
 
       document.getElementById("error").innerHTML = "";
     } else {
+      alert("Usuário e/ou senha errado(s)! Tente novamente!");
       document.getElementById("error").innerHTML = "Usuário e/ou senha errado(s)! Tente novamente!";
     }
   }

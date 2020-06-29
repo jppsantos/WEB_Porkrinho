@@ -100,8 +100,12 @@ public class UserService {
   public String login(String json) {
     try {
       UserBean user = gson.fromJson(json, UserBean.class);
-      String result = userBO.login(user.getCpf(), user.getPassword());
-      return result;
+      UserBean result = userBO.login(user.getCpf(), user.getPassword());
+      if(user != null) {
+        String jsonn = gson.toJson(result);
+        return jsonn;
+      }
+      return gson.toJson("Usuario não encontrado!");
     } catch (Exception e) {
       return "ERROR: "+e;
     }

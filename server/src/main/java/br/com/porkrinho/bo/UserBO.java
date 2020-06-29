@@ -44,14 +44,14 @@ public class UserBO {
     return userDAO.getAll();
   }
 
-  public String login(String cpf, String password) {
+  public UserBean login(String cpf, String password) {
 		UserBean user = new UserBean(cpf, password);
 		
 		for (UserBean userBean : userDAO.getByString("cpf", cpf)) {
 			if(userBean.getCpf().equals(user.getCpf()) && userBean.getPassword().equals(user.getPassword()))
-				return gson.toJson("ok");
+				return getUserByCpf(cpf);
 		}
-		return gson.toJson("Erro ao realizar login!");
+		return null;
   }
 	
 	public UserBean getUserById(int id) {
