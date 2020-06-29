@@ -9,6 +9,7 @@
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
 	<script type="text/javascript" src="script.js"></script>
 </head>
@@ -30,7 +31,7 @@
 			<div class="card-body">
 				<h6 id="error" class="text-danger">dd</h6>
 				<h2>Insira aqui os dados da sua nova Meta</h2>
-				<form action="" method="post">
+				<form action="javascript:addMark()">
 					<div class="form-group row">
 						<label class="col-sm-2">Titulo</label>
 						<div class="col-sm-7">
@@ -58,7 +59,8 @@
 					<div class="form-group row">
 						<label class="col-sm-2">Data Limite</label>
 						<div class="col-sm-7">
-							<input type="datetime" class="form-control" name="txtData" id="date">
+							<input type="text" class="form-control" name="goalDate" placeholder="DD-MM-AAAA"  id="goalDate">
+							<script type="text/javascript">$("#goalDate").mask("00-00-0000");</script>
 						</div>
 					</div>
 
@@ -66,10 +68,11 @@
 						<label class="col-sm-2">Sua meta eh publica?</label>
 						<div class="col-sm-7">
 							<input type="checkbox" class="form-control" name="ehPublico" id="isPublic">
+							<!-- <label class="col-sm-2">Marque aqui se deseja que sua meta seja visualisada por todos</label> -->
 						</div>
 					</div>
 
-					<button type="submit" class="btn btn-primary" onclick="addMark()">Cadastrar Meta</button>
+					<button type="submit" class="btn btn-primary">Cadastrar Meta</button>
 					<h3 id="error" class="text-danger"></h3>
 				</form>
 				<!-- <h6 class="text-danger">${erro}</h6> -->
