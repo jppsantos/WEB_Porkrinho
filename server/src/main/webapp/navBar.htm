@@ -17,23 +17,25 @@
   </ul>
 </div>
 <div class="mx-auto order-0">
-  <a class="navbar-brand mx-auto btn btn-outline-primary" href="createMarkScreen.htm">Nova Meta</a>
 </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item mr-3">
+      <li class="nav-item mr-4">
         <div class="search-container">
           <div class="form-inline">
             <form action="javascript:search(search.value);">
-              <input class="form-control text-center col" name="search" type="search" placeholder="Pesquise uma meta..."
+              <input class="form-control col " name="search" style="min-width:400px;" type="search" placeholder="Pesquise uma meta..."
                 id="search" aria-label="Pesquise uma meta..." required>
               <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
         </div>
       </li>
-      <li class="nav-item">
-        <a href="javascript:logOut()" class="btn btn-secondary btn-nav">Sair</a>
+      <li class="nav-item mr-4">
+        <a href="javascript:profile()" class="btn btn-secondary btn-nav"><i class="fa fa-user" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item ">
+        <a class="navbar-brand btn btn-primary" href="createMarkScreen.htm">Nova Meta</a>
       </li>
     </ul>
   </div>

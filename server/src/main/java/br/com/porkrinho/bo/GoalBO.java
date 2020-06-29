@@ -54,6 +54,10 @@ public class GoalBO {
     return null;
   }
 
+  public List<GoalBean> getUserGoalsById(int id) {
+    return goalDAO.getByInt("idUser", id);
+  }
+
   public List<GoalBean> getGoalByTitle(String title) {
     List<GoalBean> goals = new ArrayList<GoalBean>();
 

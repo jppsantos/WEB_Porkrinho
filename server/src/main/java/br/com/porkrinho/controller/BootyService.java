@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import br.com.porkrinho.bean.BootyBean;
 import br.com.porkrinho.bo.BootyBO;
@@ -17,7 +18,7 @@ import br.com.porkrinho.bo.BootyBO;
 @Path("/booty")
 public class BootyService {
   private static BootyBO bootyBO = new BootyBO();
-  private static Gson gson = new Gson();
+  private static Gson gson = new GsonBuilder().setDateFormat("dd-MM-yyyy").create();
   
   @POST
   @Consumes(MediaType.APPLICATION_JSON)

@@ -375,40 +375,51 @@ function addUser() {
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
   // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("POST", urlRoot + "/user/add", true);
+  ajax.open("POST", urlRoot + "/user", true);
   ajax.setRequestHeader("Content-Type", "application/json");
 
   //Obtem os valores dos campos
   var name = document.getElementById("name").value;
   var lastName = document.getElementById("lastName").value;
   var cpf = document.getElementById("cpf").value;
+  // var age = document.getElementById("age").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var phone = document.getElementById("phone").value;
   var idBank = document.getElementById("idBank").value;
   var agency = document.getElementById("agency").value;
   var account = document.getElementById("account").value;
-  var pathImg = document.getElementById("pathImg").value;
+  // var pathImg = document.getElementById("pathImg").value;
 
 
 
   //converte os valores para json e manda no param
-  var text = '{"name":"' + name + '","lastName":"' + lastName + '","cpf":"' + cpf + '","email":"' + email + '","password":"' + password + '","phone":"' + phone + '","idBank":"' + idBank + '","agency":"' + agency + '","account":"' + account + '","pathImg":"sdfg"}'
+  var text = '{"name":"' + name +
+    '","lastName":"' + lastName +
+    '","cpf":"' + cpf +
+    '","email":"' + email +
+    '","phone":"' + phone +
+    '","password":"' + password +
+    '","bankAgency":"' + agency +
+    '","bankAccount":"' + account +
+    '","idBank":"' + idBank +
+    '","imgPath":"sdfg"}';
+
+  alert("text: " + text);
 
   // Envia a requisição
   ajax.send(text);
-
   // Cria um evento para receber o retorno.
   ajax.onreadystatechange = function () {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.response);
-
+      alert("Cadastro realizado com sucesso! Seja Bem vindo ao Porkrinho ☺️!");
       document.getElementById("error").innerHTML = "";
+      parent.location = "loginScreen.htm"
     } else {
-
+      alert("Erro no Cadastro 😞 Tenta de Novo ☺️");
     }
-    document.getElementById("error").innerHTML = "Error: " + this.response;
   }
 }
 
@@ -421,20 +432,34 @@ function addMark() {
     // Exemplo de requisição GET
     var ajax = new XMLHttpRequest();
     // Seta tipo de requisição e URL com os parâmetros
-    ajax.open("POST", urlRoot + "/mark", true);
-    ajax.setRequestHeader("Content-Type", "application/json", "charset", "utf-8");
+    ajax.open("POST", urlRoot + "/goal", true);
+    // ajax.setRequestHeader("Content-Type", "application/json", "charset", "utf-8");
+    ajax.setRequestHeader("Content-Type", "application/json");
 
     //Obtem os valores dos campos
     var idUser = sessionStorage.getItem('idUser');
     var title = document.getElementById("title").value;
     var description = document.getElementById("description").value;
-    var markValue = document.getElementById("markValue").value;
+    var goalDate = document.getElementById("goalDate").value;
+    var goalValue = document.getElementById("markValue").value;
     var isPublic = document.getElementById("isPublic").value == "on" ? true : false;
     // var pathImg = document.getElementById("pathImg").value;
 
     //converte os valores para json e manda no param
     // var text = '{"idUser":'+ idUser +',"title":"'+ title +'","description":"'+ description +'","currentValue":0.0,"markValue":'+ markValue +',"pathImg":"undefined","isPublic":'+ isPublic +'}';
-    var text = '{"idUser":0,"title":"atom","description":"veio do atom","currentValue":0.0,"markValue":dfgh,"pathImg":"undefined","isPublic":0}';
+    // var text = '{"idUser":0,"title":"atom","description":"veio do atom","currentValue":0.0,"markValue":dfgh,"pathImg":"undefined","isPublic":0}';
+
+    //converte os valores para json e manda no param
+    var text = '{"title":"' + title +
+      '","description":"' + description +
+      '","value":"' + 0.0 +
+      '","goalValue":"' + goalValue +
+      '","goalDate":"' + goalDate +
+      '","createDate":"' + "30-02-2020" +
+      '","isPublic":"' + isPublic +
+      '","idUser":"' + idUser +
+      '","imgPath":"defaultImg"}';
+    alert(text);
 
     // Envia a requisição
     ajax.send(text);
@@ -443,14 +468,11 @@ function addMark() {
     // Cria um evento para receber o retorno.
     ajax.onreadystatechange = function () {
       // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-      alert("readyState : " + this.readyState + " space/ status: " + this.status + " s: " + this.response);
-
       if (this.readyState == 4 && this.status == 200) {
         var data = JSON.parse(this.response);
         document.getElementById("error").innerHTML = "foi " + data;
-        alert("foi ");
+        alert("Meta cadastrada com sucesso! Agora só falta ela se realizar ☺️!");
       } else {
-        alert("foi n");
         document.getElementById("error").innerHTML = "Erro " + this.response;
       }
 
@@ -485,6 +507,99 @@ function findUserByCpf(cpf) {
 }
 
 function search(content) {
-  // var content = document.getElementById("searchText").value;
-  alert(content);
+  var searchedItem = document.getElementById("search").value;
+  sessionStorage.setItem("searchedItem", searchedItem);
+  alert(searchedItem);
+  // parent.location = "index.jsp";
 }
+
+
+function getUserMarks() {
+
+  // Exemplo de requisição GET
+  var ajax = new XMLHttpRequest();
+
+  var idUser = sessionStorage.getItem('idUser');
+  // Seta tipo de requisição e URL com os parâmetros
+  ajax.open("GET", urlRoot + "/goal/usergoals/" + idUser, true);
+
+  // Envia a requisição
+  ajax.send();
+
+  // Cria um evento para receber o retorno.
+  ajax.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+
+      var tb = document.getElementById('table');
+      while (tb.rows.length > 1) {
+        tb.deleteRow(1);
+      }
+      alert("dados: " + this.response);
+      var data = JSON.parse(this.response);
+
+      
+      data.forEach( goal => {
+        var line = document.createElement("tr");
+        line.name = "line"
+
+        var column1 = document.createElement("th");
+        var button2 = document.createElement("input");
+        button2.type = "button";
+        button2.value = goal.idGoal;
+        button2.addEventListener("click", function () {
+          vaiPageDoar(goal.idGoal);
+        })
+        button2.setAttribute('class', 'btn btn-link btn-success');
+        column1.appendChild(button2);
+        line.appendChild(column1);
+
+        var column2 = document.createElement("th");
+        column2.innerHTML = goal.title;
+        line.appendChild(column2);
+
+        var column3 = document.createElement("th");
+        column3.innerHTML = goal.createDate;
+        line.appendChild(column3);
+
+        var column4 = document.createElement("th");
+        column4.innerHTML = goal.value;
+        line.appendChild(column4);
+
+        var column5 = document.createElement("th");
+
+        var button = document.createElement("input");
+        button.type = "button";
+        button.value = "Sacar";
+        button.addEventListener("click", function () {
+          sacar(goal.idGoal);
+        })
+        button.setAttribute('class', 'btn btn-link btn-success');
+
+        column5.appendChild(button);
+
+        line.appendChild(column5);
+
+        document.getElementById("table").appendChild(line);
+        //document.getElementById("error").innerHTML = "";
+      });
+
+    } else {
+      document.getElementById("error").innerHTML = "Erro" + this.response;
+    }
+  }
+
+}
+
+function sacar(idGoal) {
+  alert("Saque relaizado com sucesso 😃!");
+}
+
+function profile() {
+  if (verifiyUser()) {
+    window.location = 'profile.htm';
+  } else {
+    window.location = 'loginScreen.htm';
+  }
+}
+

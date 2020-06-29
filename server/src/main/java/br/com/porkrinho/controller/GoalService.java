@@ -41,6 +41,25 @@ public class GoalService {
     }
   }
 
+  @GET
+  @Path("/usergoals/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getUserGoalsById(@PathParam("id") int id) {
+    try {
+      List<GoalBean> goals = goalBO.getUserGoalsById(id);
+      if(goals.isEmpty()) {
+        return gson.toJson("Não há metas cadastradas para este usuario!");
+      }
+
+      String json = gson.toJson(goals);
+      return json;
+    } catch (Exception e) {
+      return "ERROR: "+e;
+    }
+  }
+
+  
+
   @POST
   @Path("/getbyid")
   @Produces(MediaType.APPLICATION_JSON)
