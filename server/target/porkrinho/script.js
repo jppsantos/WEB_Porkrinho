@@ -653,14 +653,13 @@ function getUserMarks() {
 }
 
 function excluirMeta(idGoal){
-  alert("id "+idGoal);
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
   // Seta tipo de requisição e URL com os parâmetros
   ajax.open("DELETE", urlRoot + "/goal/" + idGoal, true);
-  
+
   // Envia a requisição
-  ajax.send(text);
+  ajax.send();
   // Cria um evento para receber o retorno.
   ajax.onreadystatechange = function () {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
@@ -676,8 +675,31 @@ function excluirMeta(idGoal){
 
 function sacar(idGoal) {
 
-  //======<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<zerar a meta update na api
-  alert("Saque relaizado com sucesso 😃!");
+  // // Exemplo de requisição GET
+  // var ajax = new XMLHttpRequest();
+  // // Seta tipo de requisição e URL com os parâmetros
+  // ajax.open("PUT", urlRoot + "/goal/" + idGoal, true);
+  // ajax.setRequestHeader("Content-Type", "application/json");
+
+  // var text = '{"value":"' + 0.0 +
+  //     '"}';
+
+  // // Envia a requisição
+  // ajax.send(text);
+ 
+
+  // // Cria um evento para receber o retorno.
+  // ajax.onreadystatechange = function () {
+  //   // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     if (this.response == "ok") {
+
+        alert("Saque realizado com sucesso 😃!!");
+  //     }else{
+  //       alert("Erro ao sacar!");
+  //     }
+  //   }
+  // }
 }
 
 function profile() {
