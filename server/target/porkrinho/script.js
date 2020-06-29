@@ -32,8 +32,16 @@ function getAllGoals() {
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
 
+  var searched = sessionStorage.getItem("searchedItem");
+  if(searched == null) {
+    ajax.open("GET", urlRoot + "/goal/all" , true);
+  } else {
+    ajax.open("GET", urlRoot + "/goal/getbytitle/" + searched , true);
+  }
+  var searched = sessionStorage.setItem("searchedItem",null);
+
   // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("GET", urlRoot + "/goal/all", true);
+  ajax.open("GET", urlRoot + "/goal/all" , true);
 
   // Envia a requisição
   ajax.send();
@@ -60,8 +68,9 @@ function getAllGoals() {
         divCard.setAttribute('style', 'height: 500px');
         //
         const img = document.createElement('img');
-        img.setAttribute('width', '200px');
+        img.setAttribute('width', '50px');
         img.setAttribute('src', 'default.png');
+        img.setAttribute('class','text-center');
         //
         const divCardBody = document.createElement('div');
         divCardBody.setAttribute('class', 'card-body');
@@ -367,7 +376,6 @@ function login(cpf, password) {
 
       document.getElementById("error").innerHTML = "";
     } else {
-      alert("Usuário e/ou senha errado(s)! Tente novamente!");
       document.getElementById("error").innerHTML = "Usuário e/ou senha errado(s)! Tente novamente!";
     }
   }
@@ -515,8 +523,7 @@ function findUserByCpf(cpf) {
 function search(content) {
   var searchedItem = document.getElementById("search").value;
   sessionStorage.setItem("searchedItem", searchedItem);
-  alert(searchedItem);
-  // parent.location = "index.jsp";
+  parent.location = "index.htm";
 }
 
 

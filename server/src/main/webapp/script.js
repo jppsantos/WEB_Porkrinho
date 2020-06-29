@@ -32,8 +32,16 @@ function getAllGoals() {
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
 
+  var searched = sessionStorage.getItem("searchedItem");
+  if(searched == null) {
+    ajax.open("GET", urlRoot + "/goal/all" , true);
+  } else {
+    ajax.open("GET", urlRoot + "/goal/getbytitle/" + searched , true);
+  }
+  var searched = sessionStorage.setItem("searchedItem",null);
+
   // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("GET", urlRoot + "/goal/all", true);
+  ajax.open("GET", urlRoot + "/goal/all" , true);
 
   // Envia a requisição
   ajax.send();
@@ -515,8 +523,7 @@ function findUserByCpf(cpf) {
 function search(content) {
   var searchedItem = document.getElementById("search").value;
   sessionStorage.setItem("searchedItem", searchedItem);
-  alert(searchedItem);
-  // parent.location = "index.jsp";
+  parent.location = "index.htm";
 }
 
 
