@@ -119,4 +119,21 @@ public class DonationService {
       return "ERROR: "+e;
     }
   }
+
+  @GET
+  @Path("/goaldonations/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getGoalDonations(@PathParam("id") int id) {
+    try {
+      List<DonationBean> donations = donationBO.listAllGoalDonations(id);
+      if(donations.isEmpty()) {
+        return gson.toJson("Não há doações cadastradas para esta meta!");
+      }
+
+      String json = gson.toJson(donations);
+      return json;
+    } catch (Exception e) {
+      return "ERROR: "+e;
+    }
+  }
 }

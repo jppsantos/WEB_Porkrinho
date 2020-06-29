@@ -93,7 +93,7 @@ public class GoalDAO {
   public List<GoalBean> getByInt(String column, int value) {
     List<GoalBean> goals = new ArrayList<GoalBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" = "+value;
+    String sql = "SELECT * FROM goal WHERE "+column+" = "+value;
 
     try {
       st = conn.createStatement();
@@ -124,7 +124,7 @@ public class GoalDAO {
   public List<GoalBean> getByString(String column, String value) {
     List<GoalBean> goals = new ArrayList<GoalBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" LIKE '%"+value+"%'";
+    String sql = "SELECT * FROM goal WHERE "+column+" LIKE '%"+value+"%'";
 
     try {
       st = conn.createStatement();

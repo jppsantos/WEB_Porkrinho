@@ -44,6 +44,12 @@ public class DonationBO {
     return donationDAO.getAll();
   }
 
+  public List<DonationBean> listAllGoalDonations(int id) {
+    return donationDAO.getByInt("goal_idGoal",id);
+  }
+
+  
+
   public DonationBean getDonationById(int id) {
 		for(DonationBean donation : donationDAO.getByInt("idDonation", id)) {
 			if(donation.getIdDonation() == id) {

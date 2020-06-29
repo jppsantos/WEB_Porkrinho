@@ -44,7 +44,7 @@ public class DonationDAO {
   }
 
   public boolean update(DonationBean donation) {
-    String sql = "UPDATE donation SET date = ? , value = ?, message = ?, isAnonymous = ?, isPublic = ?, user_idUser = ?, goal_idGoal = ? "
+    String sql = "UPDATE donation SET date = ? , valor = ?, message = ?, isAnonymous = ?, isPublic = ?, user_idUser = ?, goal_idGoal = ? "
     +"WHERE idDonation = ?";
 
 		try {
@@ -91,7 +91,7 @@ public class DonationDAO {
   public List<DonationBean> getByInt(String column, int value) {
     List<DonationBean> donations = new ArrayList<DonationBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" = "+value;
+    String sql = "SELECT * FROM donation WHERE "+column+" = "+value;
 
     try {
       st = conn.createStatement();
@@ -100,7 +100,7 @@ public class DonationDAO {
 			while(rs.next()) {
         DonationBean donation = new DonationBean(
           rs.getDate("date"), 
-          rs.getDouble("value"), 
+          rs.getDouble("valor"), 
           rs.getString("message"), 
           rs.getBoolean("isAnonymous"), 
           rs.getBoolean("isPublic"), 
@@ -123,7 +123,7 @@ public class DonationDAO {
   public List<DonationBean> getByString(String column, String value) {
     List<DonationBean> donations = new ArrayList<DonationBean>();
 
-    String sql = "SELECT * FROM user WHERE "+column+" LIKE '%"+value+"%'";
+    String sql = "SELECT * FROM donation WHERE "+column+" LIKE '%"+value+"%'";
 
     try {
       st = conn.createStatement();
@@ -132,7 +132,7 @@ public class DonationDAO {
 			while(rs.next()) {
         DonationBean donation = new DonationBean(
           rs.getDate("date"), 
-          rs.getDouble("value"), 
+          rs.getDouble("valor"), 
           rs.getString("message"), 
           rs.getBoolean("isAnonymous"), 
           rs.getBoolean("isPublic"), 
@@ -164,7 +164,7 @@ public class DonationDAO {
 			while(rs.next()) {
         DonationBean donation = new DonationBean(
           rs.getDate("date"), 
-          rs.getDouble("value"), 
+          rs.getDouble("valor"), 
           rs.getString("message"), 
           rs.getBoolean("isAnonymous"), 
           rs.getBoolean("isPublic"), 

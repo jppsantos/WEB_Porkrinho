@@ -27,13 +27,13 @@ var urlRoot = "http://localhost:8080/porkrinho/api";
 //   }
 
 
-function getAllMarks() {
+function getAllGoals() {
 
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
 
   // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("GET", urlRoot + "/mark/all", true);
+  ajax.open("GET", urlRoot + "/goal/all", true);
 
   // Envia a requisição
   ajax.send();
@@ -43,48 +43,82 @@ function getAllMarks() {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
     if (this.readyState == 4 && this.status == 200) {
 
-      var tb = document.getElementById('table');
-      while (tb.rows.length > 1) {
-        tb.deleteRow(1);
-      }
+      // var tb = document.getElementById('table');
+      // while (tb.rows.length > 1) {
+      //   tb.deleteRow(1);
+      // }
 
       var data = JSON.parse(this.response);
 
-      data.forEach(mark => {
-        // alert("entroou");
-        var line = document.createElement("tr");
-        line.name = "line"
-        var column1 = document.createElement("th");
-        column1.innerHTML = mark.title;
-        line.appendChild(column1);
+      data.forEach(goal => {
 
-        var column2 = document.createElement("th");
-        column2.innerHTML = mark.description;
-        line.appendChild(column2);
+        const divSize = document.createElement('div');
+        divSize.setAttribute('class', 'col-md-4 mt-3');
 
-        var column3 = document.createElement("th");
-        column3.innerHTML = mark.currentValue;
-        line.appendChild(column3);
+        const divCard = document.createElement('div');
+        divCard.setAttribute('class', 'card');
+        divCard.setAttribute('style', 'height: 500px');
+        //
+        const img = document.createElement('img');
+        img.setAttribute('width', '400px');
+        img.setAttribute('src', 'default.png');
+        //
+        const divCardBody = document.createElement('div');
+        divCardBody.setAttribute('class', 'card-body');
+        divCardBody.setAttribute('style', 'height: 600px');
+        //
+        const title = document.createElement('h4');
+        title.setAttribute('class', 'card-title text-center');
+        title.innerHTML = goal.title;
+        //
+        const percent = document.createElement('h6');
+        percent.setAttribute('class', 'card-text text-right mt-2');
+        percent.innerHTML = ((goal.value * 100) / goal.goalValue).toFixed() + '%';
+        //
+        const progress1 = document.createElement('div');
+        progress1.setAttribute('class', 'progress');
+        //
+        const progress2 = document.createElement('div');
+        progress2.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated');
+        progress2.setAttribute('style', 'width:' + (goal.value * 100) / goal.goalValue + '%; background-color:#F7ABAE;');
 
-        var column4 = document.createElement("th");
-        column4.innerHTML = mark.markValue;
-        line.appendChild(column4);
-
-        var column5 = document.createElement("th");
-
-        var button = document.createElement("input");
-        button.type = "button";
-        button.value = "Doar";
-        button.addEventListener("click", function () {
-          doar(mark.idMark);
+        //
+        progress1.appendChild(progress2);
+        //
+        const metaValue = document.createElement('h6');
+        metaValue.setAttribute('class', 'card-text text-left mt-3');
+        metaValue.innerHTML = "Meta: R$" + goal.goalValue;
+        //
+        const description = document.createElement('p');
+        description.setAttribute('class', 'card-text text-justify');
+        goal.description = goal.description.substring(0, 360);
+        description.innerHTML = goal.description + "...";
+        //
+        const divFooter = document.createElement('div');
+        divFooter.setAttribute('class', 'card-footer');
+        //
+        const button1 = document.createElement('button');
+        button1.setAttribute('class', 'btn btn-primary w-100');
+        button1.innerHTML = 'Detalhes';
+        button1.addEventListener("click", function () {
+          vaiPageDoar(goal.idGoal);
         })
-        button.setAttribute('class', 'btn btn-link');
-
-        column5.appendChild(button);
-
-        line.appendChild(column5);
-
-        document.getElementById("table").appendChild(line);
+        //
+        divFooter.appendChild(button1);
+        //
+        divCardBody.appendChild(title);
+        divCardBody.appendChild(percent);
+        divCardBody.appendChild(progress1);
+        divCardBody.appendChild(metaValue);
+        divCardBody.appendChild(description);
+        divCardBody.appendChild(divFooter);
+        //
+        divCard.appendChild(img);
+        divCard.appendChild(divCardBody);
+        //
+        divSize.appendChild(divCard);
+        //
+        document.getElementById("cards").appendChild(divSize);
         document.getElementById("error").innerHTML = "";
       });
 
@@ -127,25 +161,140 @@ function getAllUsers() {
   }
 }
 
-function printIDinDonation() {
-  if (verifiyUser()) {
-    var idUser = sessionStorage.getItem('idUser');
-    var idMeta = sessionStorage.getItem('idMeta');
-
-    // document.getElementById("idUser").innerHTML.value = idUser;
-    document.getElementById("idMeta").value = idMeta;
-  }
-}
-
 /**
 Vai para a página doar.htm
 */
-function doar(idMeta) {
+function vaiPageDoar(idMeta) {
   if (verifiyUser()) {
     sessionStorage.setItem("idMeta", idMeta);
     // parent.location = 'createDonationScreen.htm';
     window.location = 'createDonationScreen.htm';
-  } 
+  }
+}
+
+/**
+ * Carrega os dados da meta na página de doação pelo id
+ */
+function setDataDoacao() {
+  // Exemplo de requisição GET
+  var ajaxGoal = new XMLHttpRequest();
+
+  // Seta tipo de requisição e URL com os parâmetros
+  ajaxGoal.open("GET", urlRoot + "/goal/getbyid/" + sessionStorage.getItem('idMeta'), true);
+
+  // Envia a requisição
+  ajaxGoal.send();
+
+  // Cria um evento para receber o retorno.
+  ajaxGoal.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+
+      var data = JSON.parse(this.response);
+
+      var idGoal = document.getElementById('idGoal');
+      idGoal.value = data.idGoal;
+
+      var title = document.getElementById('title');
+      title.innerHTML = data.title;
+
+      var value = document.getElementById('value');
+      value.innerHTML = "R$" + data.value;
+
+      var percent = document.getElementById('progress');
+      percent.setAttribute('style', 'width:' + (data.value * 100) / data.goalValue + '%; background-color:#F7ABAE;');
+
+      var valueGoal = document.getElementById('valueGoal');
+      valueGoal.innerHTML = "Meta: R$" + data.goalValue;
+
+      var date = document.getElementById('createDate');
+      date.innerHTML = data.createDate;
+
+      var description = document.getElementById('description');
+      description.innerHTML = data.description;
+
+      document.getElementById("error").innerHTML = "";
+    } else {
+      document.getElementById("error").innerHTML = "Erro ao buscar dados da meta.";
+    }
+  }
+
+  // Exemplo de requisição GET
+  var ajaxUser = new XMLHttpRequest();
+
+  // Seta tipo de requisição e URL com os parâmetros
+  ajaxUser.open("GET", urlRoot + "/user/getbyid/" + sessionStorage.getItem('idUser'), true);
+
+  // Envia a requisição
+  ajaxUser.send();
+
+  // Cria um evento para receber o retorno.
+  ajaxUser.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+
+      var data = JSON.parse(this.response);
+
+      var dono = document.getElementById('dono');
+      dono.innerHTML = data.name + " " + data.lastName;
+
+      document.getElementById("error").innerHTML = "";
+    } else {
+      document.getElementById("error").innerHTML = "Erro ao buscar Usuário";
+    }
+  }
+
+  // Exemplo de requisição GET
+  var ajaxGoalDonations = new XMLHttpRequest();
+
+  // Seta tipo de requisição e URL com os parâmetros
+  ajaxGoalDonations.open("GET", urlRoot + "/donation/goaldonations/" + sessionStorage.getItem('idMeta'), true);
+
+  // Envia a requisição
+  ajaxGoalDonations.send();
+
+  // Cria um evento para receber o retorno.
+  ajaxGoalDonations.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+
+      var data = JSON.parse(this.response);
+
+      data.forEach(donation => {
+
+        var line = document.createElement("tr");
+        line.name = "line"
+        var column1 = document.createElement("th");
+        if (donation.isAnonymous) {
+          column1.innerHTML = "Anônimo";
+        } else {
+          column1.innerHTML = donation.idUser;
+        }
+
+        line.appendChild(column1);
+
+        var column2 = document.createElement("th");
+        column2.innerHTML = donation.value;
+        line.appendChild(column2);
+
+        var column3 = document.createElement("th");
+        column3.setAttribute('class', 'text-left');
+        column3.innerHTML = donation.message;
+
+        line.appendChild(column3);
+
+        var column4 = document.createElement("th");
+        column4.innerHTML = donation.date;
+        line.appendChild(column4);
+
+        document.getElementById("table").appendChild(line);
+        document.getElementById("error").innerHTML = "";
+      });
+
+    } else {
+      document.getElementById("error").innerHTML = "Erro ao buscar contribuições da meta.";
+    }
+  }
 }
 
 /**
@@ -158,7 +307,7 @@ Vai para a página doar.htm
 //     window.location = "createMarkScreen.htm";
 //   } else {
 //     sessionStorage.setItem("page", "createMarkScreen.htm");
-    
+
 
 //   }
 // }
@@ -188,17 +337,35 @@ function logOut() {
 /*
 Valida o login do usuário
 */
-function login(user, pass) {
+function login(cpf, password) {
 
-  if (user == "teste" && pass == "teste") {
+  // Exemplo de requisição GET
+  var ajaxUser = new XMLHttpRequest();
 
-    //ajax de login que retorna o id do usuario <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    sessionStorage.setItem('idUser', 0);
-    window.location = "index.jsp";
-  } else {
-    alert("Usuário e/ou senha errado(s)! Tente novamente!");
-    document.getElementById("error").innerHTML = "Usuário e/ou senha errado(s)! Tente novamente!"
+  // Seta tipo de requisição e URL com os parâmetros
+  ajaxUser.open("POST", urlRoot + "/user/login", true);
+
+  // Envia a requisição
+  ajaxUser.send('{"cpf": "' + cpf + '", "password": "' + password + '"}');
+  
+  // Cria um evento para receber o retorno.
+  ajaxUser.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+
+      var user = JSON.parse(this.response);
+
+      sessionStorage.setItem('idUser', user.idUser);
+
+      parent.location = 'index.htm';
+
+      document.getElementById("error").innerHTML = "";
+    } else {
+      alert("Usuário e/ou senha errado(s)! Tente novamente!");
+      document.getElementById("error").innerHTML = "Usuário e/ou senha errado(s)! Tente novamente!";
+    }
   }
+
 }
 
 /*
@@ -317,7 +484,7 @@ function findUserByCpf(cpf) {
   }
 }
 
-function search(content){
+function search(content) {
   // var content = document.getElementById("searchText").value;
   alert(content);
 }

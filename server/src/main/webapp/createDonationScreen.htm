@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <link 	rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-		crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script type="text/javascript" src="script.js"></script>
 
-
-    <title>Nova Doacao</title>
+	<title>Nova Doacao</title>
 </head>
-<body style="background-color:#FAE4E5;" onload="verifyUser();">
+
+<body style="background-color:#FAE4E5;" onload="setDataDoacao();">
 	<script>
 		fetch("./navBar.htm").then(response => {
 			return response.text();
@@ -20,59 +20,99 @@
 	</script>
 	<header></header>
 
-	<div class="container mt-5">
-		<div class="card text-center">
-			<div class="card-body">
-				<h2>Insira aqui os dados da sua nova doacao </h2>
-				<p id="idUserText"></p>
-				<form action="" method="post">
-					<input type="hidden" name="logica" value="CadastrarDoacao">
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Id da Meta:</label>
-						<div class="col-sm-7">
-							<input type="number" class="form-control" name="idMeta" id="idMeta" readonly>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Valor</label>
-						<div class="col-sm-7">
-							<input type="number" class="form-control" name="txtValor"
-								placeholder="Valor">
-						</div>
-					</div>
+	<h3 id="error" class="text-danger"></h3>
+	<div class="row">
 
-					<div class="form-group row">
-						<label class="col-sm-2">Mensagem</label>
-						<div class="col-sm-7">
-							<input type="text" class="form-control" name="txtMensagem"
-								placeholder="Digite uma mensagem para quem vai receber sua doação">
-						</div>
+		<div class="mt-5 col-md-8">
+			<div class="card">
+				<div class="text-center">
+					<img src="default.png" width="600">
+				</div>
+
+				<div class="card-body">
+					<h4 id="title" class="card-title text-center"></h4>
+					<h5 class="card-text text-right mt-2">Arrecadado:<a id="value" style="color:rgb(241, 116, 116);">
+							</a></h5>
+					<div class="progress">
+						<div id="progress" class="progress-bar progress-bar-striped progress-bar-animated"
+							style="width:0%; background-color:#F7ABAE;"></div>
 					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Tornar contribuicao anonima</label>
-						<div class="col-sm-7">
-							<input type="checkbox" class="form-control" name="txtEhAnonimo" >
+					<h6 id="valueGoal" class="card-text text-left mt-3"></h6>
+					<h6 class="card-text text-secondary mt-3">Criado em: <a id="createDate"></a></h6>
+					<h6 class="card-text text-secondary mt-1">Dono: <a id="dono"></a></h6>
+
+					<p id="description" class="card-text mt-5 text-justify"></p>
+				</div>
+				<div class="card-footer">
+				</div>
+			</div>
+
+		</div>
+		<div class="mt-5 col-md-4">
+			<div class="card text-center">
+				<div class="card-body">
+					<h2>Fazer contribuição</h2>
+					<form action="javascript:doar();">
+						<div class="form-group row">
+							<label class="col-sm-4 text-right">Meta:</label>
+							<div class="col-sm-4">
+								<input id="idGoal" type="number" class="form-control" readonly>
+							</div>
 						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-2">Deseja receber notificacões?</label>
-						<div class="col-sm-7">
-							<input type="checkbox" class="form-control" name="txtEhNotificado">
+
+						<div class="form-group row">
+							<label class="col-sm-4 text-right">Valor:</label>
+							<div class="col-sm-7">
+								<input type="number" class="form-control" id="value" placeholder="R$:">
+							</div>
 						</div>
-					</div>
-					
-					<button type="submit" class="btn btn-primary" onclick="">Realizar Doacao</button>
-					
-				</form>
-				<!-- <h6 class="text-danger">${erro}</h6> -->
-				<h3 id="error" class="text-danger"></h3>
+
+						<div class="form-group row">
+							<label class="col-sm-4 text-right">Mensagem:</label>
+							<div class="col-sm-7">
+								<input id="message" type="text" class="form-control"
+									placeholder="Digite sua mensagem aqui">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<input class="" type="checkbox" id="isAnonymous">
+							<label class="">Fazer contribuição anonimamente?</label>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-6 text-left">Forma de Pagamento: </label>
+							<select id="pagamento" >
+								<option>Cartão de Crédito</option>
+								<option>Cartão de Débito</option>
+								<option>Picpay</option>
+								<option>Boleto</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary col-md-12" onclick="">Contribuir</button>
+					</form>
+					<h3 id="error" class="text-danger"></h3>
+				</div>
 			</div>
 		</div>
+	</div>
 
+	<div class="mt-2">
+		<div class="card text-center">
+			<div class="card-body">
+				<h4>Contribuições</h4>
+				<table class="table" id="table">
+					<thead class="thead-light">
+						<tr>
+							<th>Usuário</th>
+							<th>Valor</th>
+							<th>Mensagem</th>
+							<th>Data</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
 	</div>
 </body>
+
 </html>
