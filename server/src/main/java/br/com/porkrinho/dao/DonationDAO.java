@@ -23,7 +23,6 @@ public class DonationDAO {
   public boolean add(DonationBean donation) {
     String sql = "INSERT INTO donation (date, valor, message, isAnonymous, isPublic, user_idUser, goal_idGoal) "
       +"VALUES (?, ?, ?, ?, ?, ?, ?)";
-
     try {
       ps = conn.prepareStatement(sql);
 

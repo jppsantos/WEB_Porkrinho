@@ -68,9 +68,10 @@ function getAllGoals() {
         divCard.setAttribute('style', 'height: 500px');
         //
         const img = document.createElement('img');
-        img.setAttribute('width', '50px');
+        img.setAttribute('width', '100px');
         img.setAttribute('src', 'default.png');
-        img.setAttribute('class','text-center');
+        img.setAttribute('style', 'display: block; margin-left: auto; margin-right: auto;');
+        img.setAttribute('class','mt-2');
         //
         const divCardBody = document.createElement('div');
         divCardBody.setAttribute('class', 'card-body');
@@ -382,6 +383,46 @@ function login(cpf, password) {
 
 }
 
+/**
+ * 
+ * Cadastra Doacao
+ */
+function addDonation() {
+  // Exemplo de requisição GET
+  var ajax = new XMLHttpRequest();
+  // Seta tipo de requisição e URL com os parâmetros
+  ajax.open("POST", urlRoot + "/donation", true);
+  ajax.setRequestHeader("Content-Type", "application/json");
+
+  //Obtem os valores dos campos
+  var idMeta = document.getElementById("idGoal").value;
+  var value = document.getElementById("idValue").value;
+  var message = document.getElementById("message").value;
+  var isAnonymous = document.getElementById("isAnonymous").value == "on" ? true : false;
+ 
+  //converte os valores para json e manda no param
+  var text = '{"idGoal":"' + idMeta +
+    '","value":' + value +
+    ',"message":"' + message +
+    '","isAnonymous":"' + isAnonymous +
+    '","idUser":' + sessionStorage.getItem('idUser') +
+    ',"date":"' + "30-06-2020" +
+    '"}';
+
+
+  // Envia a requisição
+  ajax.send(text);
+  // Cria um evento para receber o retorno.
+  ajax.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+        alert("Contribuição realizada com sucesso ☺️!");
+        document.getElementById("error").innerHTML = "";
+        parent.location = "index.htm"
+    } 
+  }
+}
+
 /*
 Cadastra usuário
 */
@@ -473,7 +514,6 @@ function addMark() {
       '","isPublic":"' + isPublic +
       '","idUser":"' + idUser +
       '","imgPath":"defaultImg"}';
-    alert(text);
 
     // Envia a requisição
     ajax.send(text);
@@ -484,7 +524,7 @@ function addMark() {
       // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
       if (this.readyState == 4 && this.status == 200) {
         var data = JSON.parse(this.response);
-        document.getElementById("error").innerHTML = "foi " + data;
+        // document.getElementById("error").innerHTML = "foi " + data;
         alert("Meta cadastrada com sucesso! Agora só falta ela se realizar ☺️!");
       } else {
         document.getElementById("error").innerHTML = "Erro " + this.response;
@@ -548,7 +588,6 @@ function getUserMarks() {
       while (tb.rows.length > 1) {
         tb.deleteRow(1);
       }
-      alert("dados: " + this.response);
       var data = JSON.parse(this.response);
 
       
@@ -597,8 +636,6 @@ function getUserMarks() {
         //document.getElementById("error").innerHTML = "";
       });
 
-    } else {
-      document.getElementById("error").innerHTML = "Erro" + this.response;
     }
   }
 
