@@ -26,7 +26,7 @@
 		<div class="mt-5 col-md-8">
 			<div class="card">
 				<div class="text-center">
-					<img src="default.png" width="600">
+					<img src="default.png" width="200">
 				</div>
 
 				<div class="card-body">
@@ -52,7 +52,7 @@
 			<div class="card text-center">
 				<div class="card-body">
 					<h2>Fazer contribuição</h2>
-					<form action="javascript:doar();">
+					<form action="javascript:addDonation();">
 						<div class="form-group row">
 							<label class="col-sm-4 text-right">Meta:</label>
 							<div class="col-sm-4">
@@ -63,7 +63,7 @@
 						<div class="form-group row">
 							<label class="col-sm-4 text-right">Valor:</label>
 							<div class="col-sm-7">
-								<input type="number" class="form-control" id="value" placeholder="R$:">
+								<input type="number" class="form-control" id="value" placeholder="R$:" required>
 							</div>
 						</div>
 
@@ -88,7 +88,7 @@
 								<option>Boleto</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary col-md-12" onclick="">Contribuir</button>
+						<button type="submit" class="btn btn-primary col-md-12">Contribuir</button>
 					</form>
 					<h3 id="error" class="text-danger"></h3>
 				</div>
