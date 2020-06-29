@@ -625,8 +625,19 @@ function getUserMarks() {
         button.value = "Sacar";
         button.addEventListener("click", function () {
           sacar(goal.idGoal);
-        })
+        });
         button.setAttribute('class', 'btn btn-link btn-success');
+
+        if (goal.value == 0.0) {
+          var excluir = document.createElement("input");
+          excluir.type = "button";
+          excluir.value = "Excluir";
+          excluir.addEventListener("click", function () {
+            excluirMeta(goal.idGoal);
+          });
+          excluir.setAttribute('class', 'btn btn-outline-danger');
+          column5.appendChild(excluir);
+        }
 
         column5.appendChild(button);
 
@@ -641,7 +652,31 @@ function getUserMarks() {
 
 }
 
+function excluirMeta(idGoal){
+  alert("id "+idGoal);
+  // Exemplo de requisição GET
+  var ajax = new XMLHttpRequest();
+  // Seta tipo de requisição e URL com os parâmetros
+  ajax.open("DELETE", urlRoot + "/goal/" + idGoal, true);
+  
+  // Envia a requisição
+  ajax.send(text);
+  // Cria um evento para receber o retorno.
+  ajax.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+      if (this.response == "ok") {
+        alert("Excluido com sucesso!");
+      }else{
+        alert("Erro ao excluir meta!");
+      }
+    }
+  }
+}
+
 function sacar(idGoal) {
+
+  //======<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<zerar a meta update na api
   alert("Saque relaizado com sucesso 😃!");
 }
 
