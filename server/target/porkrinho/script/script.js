@@ -178,7 +178,7 @@ function vaiPageDoar(idMeta) {
   if (verifiyUser()) {
     sessionStorage.setItem("idMeta", idMeta);
     // parent.location = 'createDonationScreen.htm';
-    window.location = 'createDonationScreen.htm';
+    window.location = 'donation/createDonationScreen.htm';
   }
 }
 

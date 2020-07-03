@@ -5,7 +5,9 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import br.com.porkrinho.bean.DonationBean;
+import br.com.porkrinho.bean.GoalBean;
 import br.com.porkrinho.dao.DonationDAO;
+import br.com.porkrinho.dao.GoalDAO;
 
 public class DonationBO {
   private static DonationDAO donationDAO = new DonationDAO();
@@ -13,7 +15,14 @@ public class DonationBO {
 
   public String addDonation(DonationBean donation) {
 		if(donationDAO.add(donation)) {
-			return gson.toJson("ok");
+      GoalDAO goalDAO = new GoalDAO();
+      GoalBO goalBO = new GoalBO();
+      GoalBean goalBean = goalBO.getGoalById(donation.getIdGoal());
+      goalBean.setValue(goalBean.getValue() + donation.getValue());
+      if (goalDAO.update(goalBean)) {
+        return gson.toJson("ok");
+      } 
+			return gson.toJson("Erro ao alturar meta!");
 		} else {
 			return gson.toJson("Erro ao adicionar usuário!");
 		}
