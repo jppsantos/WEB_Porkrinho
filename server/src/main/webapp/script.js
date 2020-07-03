@@ -1,32 +1,9 @@
 // import * as userBean from '/br.com.porkrinho.bean.UserBean.java';
 var urlRoot = "http://localhost:8080/porkrinho/api";
 
-// function getAllUsers(){
-//     // Exemplo de requisição GET
-//     var ajax = new XMLHttpRequest();
-//
-//     // Seta tipo de requisição e URL com os parâmetros
-//     ajax.open("GET", urlRoot + "/user/all", true);
-//
-//     // Envia a requisição
-//     ajax.send();
-//
-//     // Cria um evento para receber o retorno.
-//     ajax.onreadystatechange = function() {
-//     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-//         if (this.readyState == 4 && this.status == 200) {
-//             var data = JSON.parse(this.response);
-//             data.forEach(user => {
-//                 document.getElementById("error").innerHTML = "";
-//             });
-//         }else{
-//
-//             document.getElementById("error").innerHTML = "erro";
-//         }
-//     }
-//   }
-
-
+/**
+ * Funcao que lista todas as metas em cards
+ */
 function getAllGoals() {
 
   // Exemplo de requisição GET
@@ -42,11 +19,6 @@ function getAllGoals() {
   ajax.onreadystatechange = function () {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
     if (this.readyState == 4 && this.status == 200) {
-
-      // var tb = document.getElementById('table');
-      // while (tb.rows.length > 1) {
-      //   tb.deleteRow(1);
-      // }
 
       var data = JSON.parse(this.response);
 
@@ -125,57 +97,25 @@ function getAllGoals() {
       });
 
     } else {
-      document.getElementById("error").innerHTML = "Erro" + this.response;
+      document.getElementById("error").innerHTML = "Não existem metas cadastradas!";
     }
   }
 
 }
 
-/*
-Lista usuários
-*/
-function getAllUsers() {
-
-  // Exemplo de requisição GET
-  var ajax = new XMLHttpRequest();
-
-  // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("GET", urlRoot + "/user/all", true);
-
-  // Envia a requisição
-  ajax.send();
-
-  // Cria um evento para receber o retorno.
-  ajax.onreadystatechange = function () {
-    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-    if (this.readyState == 4 && this.status == 200) {
-
-      var data = JSON.parse(this.response);
-
-      data.forEach(mark => {
-
-        document.getElementById("error").innerHTML = this.response;
-      });
-
-    } else {
-      document.getElementById("error").innerHTML = "Erro";
-    }
-  }
-}
 
 /**
-Vai para a página doar.htm
+Vai para a página doar.htm, setando o id da meta para doação
 */
 function vaiPageDoar(idMeta) {
   if (verifiyUser()) {
     sessionStorage.setItem("idMeta", idMeta);
-    // parent.location = 'createDonationScreen.htm';
     window.location = 'createDonationScreen.htm';
   }
 }
 
 /**
- * Carrega os dados da meta na página de doação pelo id
+ * Carrega os dados da meta na página de doação pelo id da meta que já está setado
  */
 function setDataDoacao() {
   // Exemplo de requisição GET
@@ -242,7 +182,7 @@ function setDataDoacao() {
 
       document.getElementById("error").innerHTML = "";
     } else {
-      document.getElementById("error").innerHTML = "Erro ao buscar Usuário";
+      document.getElementById("error").innerHTML = "Erro ao buscar Dono da meta!";
     }
   }
 
@@ -290,31 +230,10 @@ function setDataDoacao() {
         line.appendChild(column4);
 
         document.getElementById("table").appendChild(line);
-        document.getElementById("error").innerHTML = "";
       });
-
-    } else {
-      document.getElementById("error").innerHTML = "Erro ao buscar contribuições da meta.";
     }
   }
 }
-
-/**
-Vai para a página doar.htm
-*/
-// function createMark() {
-//   if (verifiyUser()) {
-//     // sessionStorage.setItem("idUser", idUser);
-//     // parent.location = 'createMarkScreen.htm';
-//     window.location = "createMarkScreen.htm";
-//   } else {
-//     sessionStorage.setItem("page", "createMarkScreen.htm");
-
-
-//   }
-// }
-
-
 
 /*
 Verifica se o usuário está logado
@@ -372,7 +291,6 @@ function login(cpf, password) {
       document.getElementById("error").innerHTML = "Usuário e/ou senha errado(s)! Tente novamente!";
     }
   }
-
 }
 
 /**
@@ -430,16 +348,12 @@ function addUser() {
   var name = document.getElementById("name").value;
   var lastName = document.getElementById("lastName").value;
   var cpf = document.getElementById("cpf").value;
-  // var age = document.getElementById("age").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var phone = document.getElementById("phone").value;
   var idBank = document.getElementById("idBank").value;
   var agency = document.getElementById("agency").value;
   var account = document.getElementById("account").value;
-  // var pathImg = document.getElementById("pathImg").value;
-
-
 
   //converte os valores para json e manda no param
   var text = '{"name":"' + name +
@@ -453,8 +367,6 @@ function addUser() {
     '","idBank":"' + idBank +
     '","imgPath":"sdfg"}';
 
-  alert("text: " + text);
-
   // Envia a requisição
   ajax.send(text);
   // Cria um evento para receber o retorno.
@@ -462,11 +374,13 @@ function addUser() {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.response);
-      alert("Cadastro realizado com sucesso! Seja Bem vindo ao Porkrinho ☺️!");
-      document.getElementById("error").innerHTML = "";
-      parent.location = "loginScreen.htm"
-    } else {
-      alert("Erro no Cadastro 😞 Tenta de Novo ☺️");
+      if (data == "ok") {
+        alert("Cadastro realizado com sucesso! Seja Bem vindo ao Porkrinho ☺️!");
+        document.getElementById("error").innerHTML = "";
+        parent.location = "loginScreen.htm"
+      }else{
+        alert("Erro no Cadastro 😞 Tenta de Novo ☺️");
+      }
     }
   }
 }
@@ -491,11 +405,6 @@ function addMark() {
     var goalDate = document.getElementById("goalDate").value;
     var goalValue = document.getElementById("markValue").value;
     var isPublic = document.getElementById("isPublic").value == "on" ? true : false;
-    // var pathImg = document.getElementById("pathImg").value;
-
-    //converte os valores para json e manda no param
-    // var text = '{"idUser":'+ idUser +',"title":"'+ title +'","description":"'+ description +'","currentValue":0.0,"markValue":'+ markValue +',"pathImg":"undefined","isPublic":'+ isPublic +'}';
-    // var text = '{"idUser":0,"title":"atom","description":"veio do atom","currentValue":0.0,"markValue":dfgh,"pathImg":"undefined","isPublic":0}';
 
     //converte os valores para json e manda no param
     var text = '{"title":"' + title +
@@ -507,7 +416,6 @@ function addMark() {
       '","isPublic":"' + isPublic +
       '","idUser":"' + idUser +
       '","imgPath":"defaultImg"}';
-    alert(text);
 
     // Envia a requisição
     ajax.send(text);
@@ -517,42 +425,15 @@ function addMark() {
     ajax.onreadystatechange = function () {
       // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
       if (this.readyState == 4 && this.status == 200) {
-        var data = JSON.parse(this.response);
-        document.getElementById("error").innerHTML = "foi " + data;
+        document.getElementById("error").innerHTML = "";
         alert("Meta cadastrada com sucesso! Agora só falta ela se realizar ☺️!");
       } else {
-        document.getElementById("error").innerHTML = "Erro " + this.response;
+        document.getElementById("error").innerHTML = "Erro ao cadastrar Meta!";
       }
-
-    }
-
-  }
-}
-
-function findUserByCpf(cpf) {
-  // Exemplo de requisição GET
-  var ajax = new XMLHttpRequest();
-
-  // Seta tipo de requisição e URL com os parâmetros
-  ajax.open("POST", urlRoot + "/user/find/" + cpf, true);
-
-  // Envia a requisição
-  ajax.send();
-
-  // Cria um evento para receber o retorno.
-  ajax.onreadystatechange = function () {
-    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-    if (this.readyState == 4 && this.status == 200) {
-      var cpf = JSON.parse(this.response);
-      // cpf.forEach(user => {
-      //
-      // });
-      document.getElementById("error").innerHTML = "";
-    } else {
-      document.getElementById("error").innerHTML = "Erro";
     }
   }
 }
+
 
 function search(content) {
   var searchedItem = document.getElementById("search").value;
@@ -561,7 +442,9 @@ function search(content) {
   // parent.location = "index.jsp";
 }
 
-
+/**
+ * Funcao que pega todas as metas de um usuário logado
+ */
 function getUserMarks() {
 
   // Exemplo de requisição GET
@@ -583,10 +466,8 @@ function getUserMarks() {
       while (tb.rows.length > 1) {
         tb.deleteRow(1);
       }
-      alert("dados: " + this.response);
       var data = JSON.parse(this.response);
 
-      
       data.forEach( goal => {
         var line = document.createElement("tr");
         line.name = "line"
@@ -640,14 +521,15 @@ function getUserMarks() {
         line.appendChild(column5);
 
         document.getElementById("table").appendChild(line);
-        //document.getElementById("error").innerHTML = "";
       });
-
     }
   }
-
 }
 
+/**
+ * Funcao que exclui uma meta do usuário
+ * @param {id da meta a ser excluida} idGoal 
+ */
 function excluirMeta(idGoal){
   // Exemplo de requisição GET
   var ajax = new XMLHttpRequest();
@@ -669,35 +551,41 @@ function excluirMeta(idGoal){
   }
 }
 
+/**
+ * Funcao que saca um valor da meta do usuario
+ * @param {id da meta a ser sacada} idGoal 
+ */
 function sacar(idGoal) {
 
-  // // Exemplo de requisição GET
-  // var ajax = new XMLHttpRequest();
-  // // Seta tipo de requisição e URL com os parâmetros
-  // ajax.open("PUT", urlRoot + "/goal/" + idGoal, true);
-  // ajax.setRequestHeader("Content-Type", "application/json");
+  // Exemplo de requisição GET
+  var ajax = new XMLHttpRequest();
+  // Seta tipo de requisição e URL com os parâmetros
+  ajax.open("PUT", urlRoot + "/goal/" + idGoal, true);
+  ajax.setRequestHeader("Content-Type", "application/json");
 
-  // var text = '{"value":"' + 0.0 +
-  //     '"}';
+  var text = '{"value":"' + 0.0 +
+      '"}';
 
-  // // Envia a requisição
-  // ajax.send(text);
+  // Envia a requisição
+  ajax.send(text);
  
-
-  // // Cria um evento para receber o retorno.
-  // ajax.onreadystatechange = function () {
-  //   // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-  //   if (this.readyState == 4 && this.status == 200) {
-  //     if (this.response == "ok") {
+  // Cria um evento para receber o retorno.
+  ajax.onreadystatechange = function () {
+    // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+    if (this.readyState == 4 && this.status == 200) {
+      if (this.response == "ok") {
 
         alert("Saque realizado com sucesso 😃!!");
-  //     }else{
-  //       alert("Erro ao sacar!");
-  //     }
-  //   }
-  // }
+      }else{
+        alert("Erro ao sacar!");
+      }
+    }
+  }
 }
 
+/**
+ * Funcao que verifica o usuario e redireciona para a tela de profile ou de login
+ */
 function profile() {
   if (verifiyUser()) {
     window.location = 'profile.htm';

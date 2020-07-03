@@ -45,21 +45,13 @@ public class GoalDAO {
   }
 
   public boolean update(GoalBean goal) {
-    String sql = "UPDATE goal SET title = ?, description = ?, value = ?, goalValue = ?, createDate = ?, goalDate = ?, idUser = ?, isPublic = ?, imgPath = ? WHERE idGoal = ?";
+    String sql = "UPDATE goal SET value = ? WHERE idGoal = ? VALUES (?, ?)";
 
       try {
         ps = conn.prepareStatement(sql);
 
-        ps.setString(1, goal.getTitle());
-        ps.setString(2, goal.getDescription());
-        ps.setDouble(3, goal.getValue());
-        ps.setDouble(4, goal.getGoalValue());
-        ps.setDate(5, goal.getCreateDate());
-        ps.setDate(6, goal.getGoalDate());
-        ps.setInt(7, goal.getIdUser());
-        ps.setBoolean(8, goal.isPublic());
-        ps.setString(9, goal.getImgPath());
-        ps.setInt(10, goal.getIdGoal());
+        ps.setDouble(1, goal.getValue());
+        ps.setInt(2, goal.getIdGoal());
 
         if(ps.executeUpdate() == 1) {
           ps.close();
