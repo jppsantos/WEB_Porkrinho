@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="script.js"></script>
+
+	<title>Nova Doacao</title>
+</head>
+
+<body style="background-color:#FAE4E5;" onload="setDataDoacao();">
+	<script>
+		fetch("./navBar.htm").then(response => {
+			return response.text();
+		}).then(data => {
+			document.querySelector("header").innerHTML = data;
+		});
+	</script>
+	<header></header>
+	<div class="mt-5 col-md-12">
+		<div class="row">
+
+			<div class="mt-5 col-md-8">
+				<div class="card">
+					<div class="text-center">
+						<img src="default.png" width="200">
+					</div>
+
+					<div class="card-body">
+						<h4 id="title" class="card-title text-center"></h4>
+						<h5 class="card-text text-right mt-2">Arrecadado:<a id="value"
+								style="color:rgb(241, 116, 116);">
+							</a></h5>
+						<div class="progress">
+							<div id="progress" class="progress-bar progress-bar-striped progress-bar-animated"
+								style="width:0%; background-color:#F7ABAE;"></div>
+						</div>
+						<h6 id="valueGoal" class="card-text text-left mt-3"></h6>
+						<h6 class="card-text text-secondary mt-3">Criado em: <a id="createDate"></a></h6>
+						<h6 class="card-text text-secondary mt-1">Dono: <a id="dono"></a></h6>
+
+						<p id="description" class="card-text mt-5 text-justify"></p>
+					</div>
+					<div class="card-footer">
+					</div>
+				</div>
+
+			</div>
+
+			<div class="mt-5 col-md-4">
+				<div class="card text-center col-md-12">
+					<div class="card-body align-items-center col-md-12">
+						<h2>Fazer contribuição</h2>
+
+						<form action="javascript:addDonation();" class="mt-4">
+							<div class="text-left col-md-16">
+								<div class="form-group row">
+									<label class="col-sm-4">Meta:</label>
+									<div class="col-sm-8">
+										<input id="idGoal" type="number" class="form-control" readonly>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4">Valor:</label>
+									<div class="col-sm-8">
+										<input id="idValue" type="number" class="form-control" placeholder="R$:"
+											required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4">Mensagem:</label>
+									<div class="col-sm-8">
+										<input id="message" type="text" class="form-control"
+											placeholder="Digite sua mensagem aqui">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-9">Fazer contribuição anonimamente?</label>
+									<div class="col-sm-3 text-right">
+										<input class="" type="checkbox" id="isAnonymous">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-7">Forma de Pagamento: </label>
+									<div class="col-sm-5 text-right">
+										<select id="pagamento" class="text-right">
+											<option>Cartão de Crédito</option>
+											<option>Cartão de Débito</option>
+											<option>Picpay</option>
+											<option>Boleto</option>
+										</select>
+									</div>
+
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary col-md-12">Contribuir</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-2">
+			<div class="card text-center">
+				<div class="card-body">
+					<h4>Contribuições</h4>
+					<table class="table" id="table">
+						<thead class="thead-light">
+							<tr>
+								<th>Usuário</th>
+								<th>Valor</th>
+								<th>Mensagem</th>
+								<th>Data</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
