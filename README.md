@@ -1,6 +1,5 @@
-# WebProjetoFinal
-
-## Vaquinha Virtual
+# Porkrin 
+## WebProjetoFinal | Vaquinha Virtual
 
 Ex.: Dois irmãos querem comprar um computador e vão dividir a conta. Eles podem ir adicionando valores ao longo do tempo.
 
@@ -9,7 +8,6 @@ Ex.: Dois irmãos querem comprar um computador e vão dividir a conta. Eles pode
 - Criar novas metas de vaquinha;
 - Participar de vaquinhas já criadas, anonimamente ou não;
 - Notificar o criador da vaquinha quando a meta for alcançada.
-
 
 ### Entidades:
 
