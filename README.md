@@ -53,10 +53,10 @@ Ex.: Dois irmãos querem comprar um computador e vão dividir a conta. Eles pode
 
 # Porkrin Screenshots 
 
-![Goals Screen](prints/goalsScreen.png)
+![Goals Screen](PorkrinhoWeb/prints/goalsScreen.png)
 
-![Login Screen](prints/loginScreen.png)
+![Login Screen](PorkrinhoWeb/prints/loginScreen.png)
 
-![Add Goal Screen](prints/addGoalScreen.png)
+![Add Goal Screen](PorkrinhoWeb/prints/addGoalScreen.png)
 
-![Profile Screen](prints/profileScreen.png)
+![Profile Screen](PorkrinhoWeb/prints/profileScreen.png)
