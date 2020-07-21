@@ -2,7 +2,7 @@
 
 ## Vaquinha Virtual
 
-Ex.: Dois irmãos querem comprar playstation e vão dividir a conta.  Eles podem ir adicionando valores ao longo do tempo.
+Ex.: Dois irmãos querem comprar um computador e vão dividir a conta. Eles podem ir adicionando valores ao longo do tempo.
 
 ### Funcionalidades
 
@@ -14,18 +14,49 @@ Ex.: Dois irmãos querem comprar playstation e vão dividir a conta.  Eles podem
 ### Entidades:
 
 **Meta**
-Atributos:
-- Descricao do objetivo
 - Dono
+- Titulo
+- Objetivo : Descricao
 - Valor atual
 - Valor a ser alcançado
+- Imagem
+- Data limite (opcional) 
+- Público
 
-**Usuario**
-Açoes:
-- Criar metas
+**Banco**
+- Dados Bancarios
 
-**Sala**
-Atributos:
-- [Contribuidores] : Array
-- Meta
-- Alerta
+**Notificações** 
+- Mensagem
+- IdDono
+
+**Transação** 
+- IdMeta
+- IdDoador
+- Datetime
+- Valor
+- Msg para o dono
+
+**Usuário** 
+- Nome 
+- Sobrenome
+- CPF
+- Email
+- Senha
+- Telefone
+
+**Saque** 
+- valor
+- datetime
+- status
+
+
+# Porkrin Screenshots 
+
+![Goals Screen](prints/goalsScreen.png)
+
+![Login Screen](prints/loginScreen.png)
+
+![Add Goal Screen](prints/addGoalScreen.png)
+
+![Profile Screen](prints/profileScreen.png)
